@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://s2.loli.net/2023/11/26/GyIdrAsehtBv1ug.png">
 <meta property="article:published_time" content="2023-09-13T14:46:25.000Z">
-<meta property="article:modified_time" content="2024-03-18T07:17:57.590Z">
+<meta property="article:modified_time" content="2024-07-25T15:01:28.630Z">
 <meta property="article:author" content="Shi_Kang">
 <meta property="article:tag" content="Spring家族">
 <meta name="twitter:card" content="summary_large_image">
@@ -289,12 +289,12 @@
 <p>安全管理框架除了 security 之外还有 shiro 也可以实现相同的功能，相比之下 security 就笨重一些，但是相对的带来的好处就是相比 shiro，security 对于访问权限的把控细粒度比较好</p>
 <p>笔记基于 Springboot 2.4.0 的 web 程序通过 Java 代码 + 注解的方式进行配置 ( 不使用 xml 配置文件 )</p>
 <h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><p>创建好 boot 程序之后，导入静态素材页面至 templates 目录下，配置好三个 level 的视图 ( 页面来自狂神说 ) 跳转就可以开始练习了</p>
-<p><img src="/./img/security-01.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/security-01.png" srcset="/img/loading.gif" lazyload></p>
 <p>boot 项目添加 security 环境需要在项目创建时勾选 security 模块，或者手动在 pom 文件中添加场景启动器：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- security场景启动器，除此之外还引用了web、thymeleaf、test、lombok... --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-security<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
 <p>当我们将依赖引入后，无需做任何的配置，security 就已经开始工作了，他默认会验证所有请求只有登录的情况下才可以访问，并且为我们提供了登录页面：</p>
-<p><img src="/./img/security-02.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/security-02.jpg" srcset="/img/loading.gif" lazyload></p>
 <p>security 默认提供的登录用户名为 <code>user</code>，登录密码是随机分配的，通过查看程序启动日志就可以看到：</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">Using</span> <span class="hljs-keyword">generated</span> <span class="hljs-keyword">security</span> <span class="hljs-keyword">password</span>: f20e3e53-b7fc<span class="hljs-number">-4</span>a3b<span class="hljs-number">-9</span>d53-f6cc57b9c586<br></code></pre></td></tr></table></figure>
 
@@ -313,7 +313,7 @@
 </ul>
 <p>对哪些请求操作可以通过 <code>antMatchers</code> 进行添加，例如对 &#x2F; 或者对 index.html 请求进行操作，<code>anyRequest</code> 代表剩下的所有请求，而具体执行什么操作可以通过 <code>permitAll</code> 和 <code>authenticated</code> 进行设置</p>
 <p>如上设置后，就可以在未登录的情况下访问 index 程序首页，而访问 level1 2 3 等就需要进行登录，直接访问会提示 403 Forbidden 没有权限访问</p>
-<p><img src="/./img/security-03.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/security-03.jpg" srcset="/img/loading.gif" lazyload></p>
 <h2 id="登录表单设置"><a href="#登录表单设置" class="headerlink" title="登录表单设置"></a>登录表单设置</h2><h3 id="简单登录授权"><a href="#简单登录授权" class="headerlink" title="简单登录授权"></a>简单登录授权</h3><p>上面通过重写 <code>configure(HttpSecurity http)</code> 方法实现了请求的授权与放行，以及授权失败后的 403 页面，但是之前我们没有设置的时候他会自动跳转到登录页面，这个时候我们就需要添加一下表单的相关设置了</p>
 <p>之前说过 <code>authorizeRequests</code> 是根据请求进行授权验证，验证部分结束后开始进行表单方面设置，需要使用 <code>formLogin</code> 来对表单进行操作，<strong>当进行两种不同操作的时候，中间需要用 <code>and()</code> 连接</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@EnableWebSecurity</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SecurityConfig</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">WebSecurityConfigurerAdapter</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">configure</span><span class="hljs-params">(HttpSecurity http)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        http.authorizeRequests()  <span class="hljs-comment">// 根据请求请求进行验证</span><br>                .antMatchers(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-string">&quot;/index.html&quot;</span>).permitAll()<br>                .anyRequest().authenticated()<br>                .and()<br>            <span class="hljs-comment">// 添加表单方面的设置</span><br>            .formLogin();  <span class="hljs-comment">// 这一句话就可以开启登录表单了</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -330,7 +330,7 @@
 <p>修改表单提交地址以及表单项</p>
 </blockquote>
 <p>security 提供的登录页表单的 name 和提交的 action 地址都是预设好的，所以这里我们要先获取一下然后放到自己的登录页面中</p>
-<p><img src="/./img/security-04.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/security-04.jpg" srcset="/img/loading.gif" lazyload></p>
 <p>当我们配置好要求后去进行登录，结果 <strong>请求的地址不存在404</strong>，这是因为我们在<strong>自定义登录页面的同时也影响到了表单提交地址</strong>，<em>表单的提交地址和自定义的登录地址相同</em>，也就是说我们通过 get 请求访问 toLogin 跳转到了登录页面，然后需要通过 post 请求访问 toLogin 进行登录</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">configure</span><span class="hljs-params">(HttpSecurity http)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>    http.authorizeRequests()  <span class="hljs-comment">// 根据请求请求进行验证</span><br>        .antMatchers(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-string">&quot;/index.html&quot;</span>, <span class="hljs-string">&quot;/toLogin&quot;</span>,<br>                     <span class="hljs-string">&quot;/views/login.html&quot;</span>, <span class="hljs-string">&quot;/doLogin&quot;</span>)<br>        .permitAll().anyRequest().authenticated()<br>        .and()<br>        .formLogin()<br>        .loginPage(<span class="hljs-string">&quot;/toLogin&quot;</span>)  <span class="hljs-comment">// 自定义登录页</span><br>        .loginProcessingUrl(<span class="hljs-string">&quot;/doLogin&quot;</span>); <span class="hljs-comment">// 表单的POST提交地址接口，无需自己实现</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -440,9 +440,9 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!--主容器--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ui container&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">th:replace</span>=<span class="hljs-string">&quot;~&#123;index::nav-menu&#125;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ui segment&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;text-align: center&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Level-1-1<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">th:href</span>=<span class="hljs-string">&quot;@&#123;/&#125;&quot;</span>&gt;</span>返回首页<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br>        <span class="hljs-symbol">&amp;nbsp;</span> <span class="hljs-symbol">&amp;nbsp;</span> <span class="hljs-symbol">&amp;nbsp;</span> <span class="hljs-symbol">&amp;nbsp;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">th:href</span>=<span class="hljs-string">&quot;@&#123;/doLogout&#125;&quot;</span>&gt;</span>退出登录<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
 <p>注销的控制器完成了，点击注销的超链接也完成了，接下来我们来测试一下结果：</p>
-<p><img src="/./img/security-05.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/security-05.jpg" srcset="/img/loading.gif" lazyload></p>
 <p>结果点击退出登录之后提示 404 了，这是因为 *security 出于安全考虑配置了防止跨站请求伪造 ( CSRF )*，他要求我们的<strong>请求必须是 POST 请求，且需要携带参数 token 参数</strong>，之前的登录表单虽然我们没有添加 token 参数，但是仔细看请求信息的时候还是可以看出 scurity 自动为我们添加了这个参数：</p>
-<p><img src="/./img/security-06.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/security-06.jpg" srcset="/img/loading.gif" lazyload></p>
 <p>我们的注销没有携带 token 参数并且不是 POST 请求，为了省事这里选择<em>关闭 CSRF 功能</em>：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">configure</span><span class="hljs-params">(HttpSecurity http)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>    http.authorizeRequests()  <span class="hljs-comment">// 根据请求请求进行验证</span><br>        ......<br>        .rememberMe()  <span class="hljs-comment">// 记住我</span><br>         .rememberMeParameter(<span class="hljs-string">&quot;remember&quot;</span>)<br>         .and()<br>        .csrf().disable()  <span class="hljs-comment">// 关闭跨站请求伪造防护功能</span><br>        .logout()      <span class="hljs-comment">// 开启注销功能</span><br>            .logoutUrl(<span class="hljs-string">&quot;/doLogout&quot;</span>)  <span class="hljs-comment">// 指定注销需要请求的控制器地址，控制器代码不需要我们实现</span><br>            .logoutSuccessUrl(<span class="hljs-string">&quot;/&quot;</span>);  <span class="hljs-comment">// 注销成功后跳转的目标页面</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -594,9 +594,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/23/img/assets/js/main/" title="">
+                      <a href="/2024/05/02/Spring%20Data%20Jpa%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/" title="Spring Data Jpa 学习笔记">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile"></span>
+                        <span class="hidden-mobile">Spring Data Jpa 学习笔记</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
