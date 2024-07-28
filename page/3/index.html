@@ -7,8 +7,11 @@
 
 <head>
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
   <link rel="icon" href="/img/myfavicon.png">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -39,7 +42,7 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
@@ -64,7 +67,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"gtag":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":null,"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -77,7 +80,7 @@
 
 
   
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -86,7 +89,7 @@
   <header>
     
 
-<div class="header-inner" style="height: 80vh;">
+<div class="header-inner" style="height: 100vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -216,7 +219,7 @@
     
       <div class="container nopadding-x-md">
         <div id="board"
-          >
+          style="margin-top: 0">
           
           <div class="container">
             <div class="row">
@@ -244,7 +247,7 @@
       
       <a class="index-excerpt " href="/2021/04/13/Java%E7%AC%94%E8%AE%B0/JDK8%E6%96%B0%E7%89%B9%E6%80%A7/" target="_self">
         <div>
-          函数式接口函数式接口是1.8中的新特性，他不属于新语法，更像是一种规范 面向对象接口复习在这里先回顾一下面向对象的接口，创建接口的关键字为interface，这里创建一个日志接口： 123public interface LogService &#123;    void info();&#125;  众所周知，Java中的接口是不能直接创建实例的，因为他的抽象方法没有得到实现：  当我们想要创建
+          函数式接口 函数式接口是1.8中的新特性，他不属于新语法，更像是一种规范 面向对象接口复习 在这里先回顾一下面向对象的接口，创建接口的关键字为interface，这里创建一个日志接口： 123public interface LogService &#123;    void info();&#125; 众所周知，Java中的接口是不能直接创建实例的，因为他的抽象方法没有得到实现：  当我们想要创
         </div>
       </a>
 
@@ -311,7 +314,7 @@
       
       <a class="index-excerpt " href="/2021/04/13/Java%E7%AC%94%E8%AE%B0/%E6%B3%A8%E8%A7%A3%E4%B8%8E%E5%8F%8D%E5%B0%84/" target="_self">
         <div>
-          Java注解在 java 中以 @ 符号开头标在类上、函数上、属性等等上的就是 java 中的注解 ( Annotation )，他是在 JDK5 引进的技术，我们在初学 java 的时候就接触过注解，只是没有留意过罢了。 常见的注解   常见注解 作用描述    @Override 表示该方法是复写父类&#x2F;接口的方法   @Deprecated 表示该方法为过期方法   @Suppres
+          Java注解 在 java 中以 @ 符号开头标在类上、函数上、属性等等上的就是 java 中的注解 ( Annotation )，他是在 JDK5 引进的技术，我们在初学 java 的时候就接触过注解，只是没有留意过罢了。 常见的注解    常见注解 作用描述     @Override 表示该方法是复写父类/接口的方法   @Deprecated 表示该方法为过期方法   @SuppressW
         </div>
       </a>
 
@@ -378,7 +381,7 @@
       
       <a class="index-excerpt " href="/2021/04/13/Java%E7%AC%94%E8%AE%B0/%E7%BA%BF%E7%A8%8B%E6%8A%80%E6%9C%AF/" target="_self">
         <div>
-          Java多线程 进程，线程以及多线程  想学习线程首先要搞懂进程，进程指的就是我们正在运行的某个应用程序，例如 QQ，微信以及自己编写的 java 程序运行起来之后都属于一个进程 线程是最小的运算调度单位，一个进程要求至少拥有一个线程，在单核处理器的情况下多线程是以交替形式运行的，并不是同时运行，只是切换的速度比较快而已，多核处理器也是同理，每个处理器都可以调用线程，可以实现同时运行 我们用 ja
+          Java多线程  进程，线程以及多线程  想学习线程首先要搞懂进程，进程指的就是我们正在运行的某个应用程序，例如 QQ，微信以及自己编写的 java 程序运行起来之后都属于一个进程 线程是最小的运算调度单位，一个进程要求至少拥有一个线程，在单核处理器的情况下多线程是以交替形式运行的，并不是同时运行，只是切换的速度比较快而已，多核处理器也是同理，每个处理器都可以调用线程，可以实现同时运行 我们用 j
         </div>
       </a>
 
@@ -445,7 +448,7 @@
       
       <a class="index-excerpt " href="/2021/03/13/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/Angular%E7%AC%94%E8%AE%B0/" target="_self">
         <div>
-          Angular 脚手架Angular 环境搭建 安装  angular8 需要 node 版本最低是 10.13，我的 node 是 8.17.0，那么就指定版本安装 123# 查看版本，低于要求请跟新版本node -vnpm -v  1234# 安装typescript，可跳过npm install -g typescript# 安装 angularnpm install @angular/cl
+          Angular 脚手架 Angular 环境搭建 安装  angular8 需要 node 版本最低是 10.13，我的 node 是 8.17.0，那么就指定版本安装 123# 查看版本，低于要求请跟新版本node -vnpm -v 1234# 安装typescript，可跳过npm install -g typescript# 安装 angularnpm install @angular/cl
         </div>
       </a>
 
@@ -512,7 +515,7 @@
       
       <a class="index-excerpt " href="/2021/03/13/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/jQuery%E7%AC%94%E8%AE%B0/" target="_self">
         <div>
-          jQuery学习笔记jQuery 是一个快速、简洁的 JS 框架，它封装 JS 中常用的功能代码，提供一种简便使用方式，优化HTML文档操作、事件处理、动画设计和 AJAX 请求 想要在页面上使用 jQuery 需要添加引用：https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js  jQuery初体验   页面加载完成后执行 JS  12345
+          jQuery学习笔记 jQuery 是一个快速、简洁的 JS 框架，它封装 JS 中常用的功能代码，提供一种简便使用方式，优化HTML文档操作、事件处理、动画设计和 AJAX 请求 想要在页面上使用 jQuery 需要添加引用：https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js  jQuery初体验   页面加载完成后执行 JS  1234
         </div>
       </a>
 
@@ -579,7 +582,7 @@
       
       <a class="index-excerpt " href="/0202/06/13/SpringMVC%E7%AC%94%E8%AE%B0/" target="_self">
         <div>
-          SpringMVC 笔记SpringMVC是基于MVC处理模式的web框架，分离了 控制器 - 模型对象 - 过滤器 以及处理程序对象 SpringMVC的工作流程:  客户端通过浏览器发出请求，通过web.xml的配置调用DispatcherServlet ( 核心处理器 ) 接收请求，并将请求交给处理器映射器处理 映射器 ( BeanNameUrlHandlerMapping ) 通过请求的u
+          SpringMVC 笔记 SpringMVC是基于MVC处理模式的web框架，分离了 控制器 - 模型对象 - 过滤器 以及处理程序对象 SpringMVC的工作流程:  客户端通过浏览器发出请求，通过web.xml的配置调用DispatcherServlet ( 核心处理器 ) 接收请求，并将请求交给处理器映射器处理 映射器 ( BeanNameUrlHandlerMapping ) 通过请求的
         </div>
       </a>
 
@@ -704,10 +707,11 @@
       </span>
     
     
-  
-</div>
 
   
+
+</div>
+
   
   
 </div>
