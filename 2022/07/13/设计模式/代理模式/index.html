@@ -7,8 +7,11 @@
 
 <head>
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
   <link rel="icon" href="/img/myfavicon.png">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -16,12 +19,12 @@
   <meta name="author" content="Shi_Kang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="代理模式代理模式顾名思义，就是以你的名义帮你处理一些琐事，例如：用户A 近期准备结婚，他需要预定饭店，布置会场，邀请亲朋，制定菜单等等等等…. 这样处理事情就比较麻烦，针对这些琐事就可以找 婚庆公司 来处理，他们可以解决婚礼过程中的大部分事情，这样用户A 只需要面对结婚这件事儿本身就可以，而不需要考虑其他的事情。 上面这个例子中 婚庆公司的定位就是代理，Java 中有些地方也需要使用代理模式进行解">
+    <meta name="description" content="代理模式 代理模式顾名思义，就是以你的名义帮你处理一些琐事，例如：用户A 近期准备结婚，他需要预定饭店，布置会场，邀请亲朋，制定菜单等等等等… 这样处理事情就比较麻烦，针对这些琐事就可以找 婚庆公司 来处理，他们可以解决婚礼过程中的大部分事情，这样用户A 只需要面对结婚这件事儿本身就可以，而不需要考虑其他的事情。 上面这个例子中 婚庆公司的定位就是代理，Java 中有些地方也需要使用代理模式进行解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java动态代理">
 <meta property="og:url" content="http://example.com/2022/07/13/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Shi_Kang">
-<meta property="og:description" content="代理模式代理模式顾名思义，就是以你的名义帮你处理一些琐事，例如：用户A 近期准备结婚，他需要预定饭店，布置会场，邀请亲朋，制定菜单等等等等…. 这样处理事情就比较麻烦，针对这些琐事就可以找 婚庆公司 来处理，他们可以解决婚礼过程中的大部分事情，这样用户A 只需要面对结婚这件事儿本身就可以，而不需要考虑其他的事情。 上面这个例子中 婚庆公司的定位就是代理，Java 中有些地方也需要使用代理模式进行解">
+<meta property="og:description" content="代理模式 代理模式顾名思义，就是以你的名义帮你处理一些琐事，例如：用户A 近期准备结婚，他需要预定饭店，布置会场，邀请亲朋，制定菜单等等等等… 这样处理事情就比较麻烦，针对这些琐事就可以找 婚庆公司 来处理，他们可以解决婚礼过程中的大部分事情，这样用户A 只需要面对结婚这件事儿本身就可以，而不需要考虑其他的事情。 上面这个例子中 婚庆公司的定位就是代理，Java 中有些地方也需要使用代理模式进行解">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://s2.loli.net/2023/11/26/GyIdrAsehtBv1ug.png">
 <meta property="article:published_time" content="2022-07-13T12:46:25.000Z">
@@ -31,6 +34,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://s2.loli.net/2023/11/26/GyIdrAsehtBv1ug.png">
   
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
   <title>Java动态代理 - Shi_Kang</title>
@@ -50,7 +55,7 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
@@ -75,7 +80,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"gtag":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":null,"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -88,7 +93,7 @@
 
 
   
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -101,7 +106,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Shi Kang Full&#39;s Blog</strong>
+      <strong>Shi·s Web Space</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -197,7 +202,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/banner.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -285,45 +290,42 @@
             
               <div class="markdown-body">
                 
-                <h1 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h1><p>代理模式顾名思义，就是以你的名义帮你处理一些琐事，例如：用户A 近期准备结婚，他需要预定饭店，布置会场，邀请亲朋，制定菜单等等等等…. 这样处理事情就比较麻烦，针对这些琐事就可以找 <em>婚庆公司</em> 来处理，他们可以解决婚礼过程中的大部分事情，这样用户A 只需要面对结婚这件事儿本身就可以，而不需要考虑其他的事情。</p>
+                <h1>代理模式</h1>
+<p>代理模式顾名思义，就是以你的名义帮你处理一些琐事，例如：用户A 近期准备结婚，他需要预定饭店，布置会场，邀请亲朋，制定菜单等等等等… 这样处理事情就比较麻烦，针对这些琐事就可以找 <em>婚庆公司</em> 来处理，他们可以解决婚礼过程中的大部分事情，这样用户A 只需要面对结婚这件事儿本身就可以，而不需要考虑其他的事情。</p>
 <p>上面这个例子中 <em>婚庆公司的定位就是代理</em>，Java 中有些地方也需要使用代理模式进行解决，例如事务，日志等等，我们希望 service 中只需要负责业务逻辑本身而不要掺杂其他的代码，这里就可以用到代理模式</p>
 <p><strong>动态代理模式总结起来一句话：可以做到在不修改目标对象的功能前提下,对目标功能扩展</strong></p>
 <p>我们需要了解掌握三种代理模式：静态代理，JDK 动态代理，CGLIB 动态代理，我们通过日志的方式进行了解</p>
-<h2 id="静态代理模式"><a href="#静态代理模式" class="headerlink" title="静态代理模式"></a>静态代理模式</h2><p>我们需要准备 service 接口以及代理类和被代理类：</p>
+<h2 id="静态代理模式">静态代理模式</h2>
+<p>我们需要准备 service 接口以及代理类和被代理类：</p>
 <blockquote>
 <p>正常执行添加日志</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// service接口</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">UserService</span> &#123;<br>    <span class="hljs-comment">// 添加用户的方法</span><br>    <span class="hljs-type">int</span> <span class="hljs-title function_">insertUser</span><span class="hljs-params">(String username, String password)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 实现类</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">UserService</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">insertUser</span><span class="hljs-params">(String username, String password)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-comment">// 假装有DAO层</span><br>        <span class="hljs-comment">// count = userDao.insertUser(username, password);</span><br>        <span class="hljs-keyword">return</span> count;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 测试类</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AppTest</span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">UserService</span> <span class="hljs-variable">us</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UserServiceImpl</span>();<br>        System.out.println(us.insertUser(<span class="hljs-string">&quot;老八&quot;</span>, <span class="hljs-string">&quot;秘制小汉堡&quot;</span>));<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <p>当我们运行测试类的 main 方法后发现控制台只输出了数字 1，如果我们想要实现日志功能的话，需要在实现类中添加打印语句，如下所示：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 【改】实现类</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">UserService</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">insertUser</span><span class="hljs-params">(String username, String password)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-comment">// 假装有DAO层</span><br>        <span class="hljs-comment">// count = userDao.insertUser(username, password);</span><br>        System.out.println(<span class="hljs-string">&quot;用户【&quot;</span> + username + <span class="hljs-string">&quot;】插入成功！&quot;</span>);<br>        <span class="hljs-keyword">return</span> count;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <p>日志添加完成！</p>
 <blockquote>
 <p>使用代理模式添加日志</p>
 </blockquote>
 <p>但是按照之前的说法，我们不希望在 service 中掺杂其他的代码，它仅仅负责逻辑即可，所以我们要移除掉实现类中的输出语句，新建一个代理类来完成这部分功能：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 代理类</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserServiceProxy</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">UserService</span> &#123;<br>    <span class="hljs-keyword">private</span> UserService us;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">UserServiceProxy</span><span class="hljs-params">( UserService us )</span>&#123;<br>        <span class="hljs-built_in">this</span>.us = us;<br>    &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">insertUser</span><span class="hljs-params">(String username, String password)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>.us.insertUser(username, password);<br>        System.out.println(<span class="hljs-string">&quot;用户【&quot;</span> + username + <span class="hljs-string">&quot;】插入成功！&quot;</span>);<br>        <span class="hljs-keyword">return</span> count;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 测试类</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AppTest</span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">UserService</span> <span class="hljs-variable">us</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UserServiceProxy</span>( <span class="hljs-keyword">new</span> <span class="hljs-title class_">UserServiceImpl</span>() );<br>        System.out.println(us.insertUser(<span class="hljs-string">&quot;老八&quot;</span>, <span class="hljs-string">&quot;秘制小汉堡&quot;</span>));<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>创建代理类的对象，将被代理的实例作为参数传过去，让代理类以自己的名义帮自己实现日志功能，这样实现类中只需要负责书写业务逻辑就可以了。这就是 &#x3D;&#x3D;静态代理模式&#x3D;&#x3D;</p>
-<h2 id="JDK动态代理"><a href="#JDK动态代理" class="headerlink" title="JDK动态代理"></a>JDK动态代理</h2><p>静态代理可以做到在不修改源代码的情况下添加新的功能，但是如果 service 比较多的话静态代理的弊端就出来了，每个 service 都对应一个代理类，这样代码量就大大增加，这里就可以使用 JDK动态代理来解决这个问题：</p>
+<p>创建代理类的对象，将被代理的实例作为参数传过去，让代理类以自己的名义帮自己实现日志功能，这样实现类中只需要负责书写业务逻辑就可以了。这就是 ==静态代理模式==</p>
+<h2 id="JDK动态代理">JDK动态代理</h2>
+<p>静态代理可以做到在不修改源代码的情况下添加新的功能，但是如果 service 比较多的话静态代理的弊端就出来了，每个 service 都对应一个代理类，这样代码量就大大增加，这里就可以使用 JDK动态代理来解决这个问题：</p>
 <blockquote>
 <p>代码实现</p>
 </blockquote>
 <p>JDK动态代理依靠 <code>java.lang.reflect.Proxy</code> 实现，保持接口和实现类不动，新建代理类：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">LogProxy</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Object <span class="hljs-title function_">getInstance</span><span class="hljs-params">( Object obj)</span>&#123;<br>        <span class="hljs-comment">// 获取被代理类的类加载器</span><br>        <span class="hljs-type">ClassLoader</span> <span class="hljs-variable">classLoader</span> <span class="hljs-operator">=</span> obj.getClass().getClassLoader();<br>        <span class="hljs-comment">// 获取被代理的类实现的所有接口</span><br>        Class&lt;?&gt;[] classes = obj.getClass().getInterfaces();<br>        <span class="hljs-comment">// 在这里接管目标对象执行函数的过程</span><br>        <span class="hljs-comment">// proxy不用管，method：被执行的函数，args：传递的参数</span><br>        <span class="hljs-type">InvocationHandler</span> <span class="hljs-variable">invocationHandler</span> <span class="hljs-operator">=</span> <br>            (Object proxy, Method method, Object[] args)-&gt;&#123;<br>             <span class="hljs-type">Object</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> method.invoke(obj, args);<br>                System.out.println(<span class="hljs-string">&quot;用户【&quot;</span> + Arrays.asList(args) + <span class="hljs-string">&quot;】插入成功！&quot;</span>);<br>                <span class="hljs-keyword">return</span> result;<br>            &#125;;<br>        <span class="hljs-type">Object</span> <span class="hljs-variable">obj</span> <span class="hljs-operator">=</span> Proxy.newProxyInstance(classLoader, classes, invocationHandler);<br>        <span class="hljs-keyword">return</span> obj;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <p>调用 <code>LogProxy.getInstance</code> 传入被代理的对象，通过 <code>Proxy.newProxyInstance</code> 来获取到代理对象，调用这个方法需要传入三个参数：</p>
 <ul>
 <li>【classLoader】被代理的类的类加载器</li>
 <li>【classes】被代理的类所实现的所有接口</li>
-<li>【invocationHandler】是一个支持函数式的接口，直接创建对象即可，当被代理的类调用方法的时候会在这里进行执行，通过 lambda 创建该类的实例需要接受三个形参：<ul>
+<li>【invocationHandler】是一个支持函数式的接口，直接创建对象即可，当被代理的类调用方法的时候会在这里进行执行，通过 lambda 创建该类的实例需要接受三个形参：
+<ul>
 <li>【proxy】暂时不用管…</li>
 <li>【method】被代理的类执行的方法会在这里进行处理</li>
 <li>【args】被代理类执行方法时传入的参数</li>
@@ -336,34 +338,30 @@
 </blockquote>
 <p>我们通过 <code>Proxy.newProxyInstance</code> 传参成功返回了代理对象 ，然后在测试类中成功转换为 <code>UserService</code> 实例进行日志增强，现在我们尝试打印一下转换之前的代理对象的 class 是什么样子的：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 代理类</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">LogProxy</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Object <span class="hljs-title function_">getInstance</span><span class="hljs-params">(Object obj)</span> &#123;<br>        <span class="hljs-comment">// 省略多余代码</span><br>        <span class="hljs-type">ClassLoader</span> <span class="hljs-variable">classLoader</span> <span class="hljs-operator">=</span> obj.getClass().getClassLoader();<br>        Class&lt;?&gt;[] classes = obj.getClass().getInterfaces();<br>        <span class="hljs-type">InvocationHandler</span> <span class="hljs-variable">invocationHandler</span> <span class="hljs-operator">=</span> <br>            (Object proxy, Method method, Object[] args) -&gt; method.invoke(obj, args);<br>        <span class="hljs-comment">// 获取代理对象并进行打印</span><br>        <span class="hljs-type">Object</span> <span class="hljs-variable">proxy</span> <span class="hljs-operator">=</span> <br>            Proxy.newProxyInstance(classLoader, classes, invocationHandler);<br>        System.out.println(proxy.getClass());<br>        <span class="hljs-keyword">return</span> proxy;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <p>打印结果为：<code>class com.sun.proxy.$Proxy0</code>，并不是我们熟悉的类型，那为什么他可以转换为 <code>UserService</code> 类型呢？因为他获取了被代理目标类实现的所有接口：<code>obj.getClass().getInterfaces()</code>，让我们打印一下代理对象实现的接口是什么样子的：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">LogProxy</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Object <span class="hljs-title function_">getInstance</span><span class="hljs-params">(Object obj)</span> &#123;<br>        <span class="hljs-comment">// 省略多余代码</span><br>        <span class="hljs-type">ClassLoader</span> <span class="hljs-variable">classLoader</span> <span class="hljs-operator">=</span> obj.getClass().getClassLoader();<br>        Class&lt;?&gt;[] classes = obj.getClass().getInterfaces();<br>        <span class="hljs-type">InvocationHandler</span> <span class="hljs-variable">invocationHandler</span> <span class="hljs-operator">=</span> <br>            (Object proxy, Method method, Object[] args) -&gt; method.invoke(obj, args);<br>        <span class="hljs-comment">// 获取代理对象并进行打印</span><br>        <span class="hljs-type">Object</span> <span class="hljs-variable">proxy</span> <span class="hljs-operator">=</span> <br>            Proxy.newProxyInstance(classLoader, classes, invocationHandler);<br>        System.out.println(Arrays.asList(proxy.getClass().getInterfaces()));<br>        <span class="hljs-keyword">return</span> proxy;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <p>打印结果为：<code>[interface site.hanzhe.proxy.jdkProxy.UserService]</code>，代理对象实现了和被代理对象一模一样的接口，所以他可以转换为 <code>UserService</code>，那么如果我们被代理的类没有实现任何接口会怎么样呢？</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 修改被代理的类，让他不实现任何接口</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserServiceImpl</span> <span class="hljs-comment">/* implements UserService */</span> &#123;<br>    <span class="hljs-comment">// @Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">insertUser</span><span class="hljs-params">(String username, String password)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-comment">// 假装有DAO层</span><br>        <span class="hljs-comment">// count = userDao.insertUser(username, password);</span><br>        System.out.println(username + <span class="hljs-string">&quot;--&quot;</span> + password);<br>        <span class="hljs-keyword">return</span> count;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <p>被代理类修改完成了，代理类保持不变，在测试类中修改强制转换类型，然后进行测试</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AppTest</span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">UserServiceImpl</span> <span class="hljs-variable">us</span> <span class="hljs-operator">=</span><br>             (UserServiceImpl)LogProxy.getInstance(<span class="hljs-keyword">new</span> <span class="hljs-title class_">UserServiceImpl</span>());<br>        us.insertUser(<span class="hljs-string">&quot;老八&quot;</span>, <span class="hljs-string">&quot;秘制小汉堡&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <p>系统抛出了 <code>java.lang.ClassCastException</code> 异常，详细信息为 <code>com.sun.proxy.$Proxy0 cannot be cast to site.hanzhe.proxy.jdkProxy.UserServiceImpl</code>，告诉我们无法强制转换为 <code>UserServiceImpl</code> 类型的对象，这样一来我们就测出了一个问题，JDK动态代理要求 <em>被代理的对象必须实现至少一个接口</em></p>
-<h2 id="CGLIB动态代理"><a href="#CGLIB动态代理" class="headerlink" title="CGLIB动态代理"></a>CGLIB动态代理</h2><p>在之前的静态代理中，代理类与被代理类实现了同一个接口，从而达到对每个函数进行代理的目的，而在 JDK动态代理中要求被代理的类必须实现至少一个接口，那么如果我们被代理的类没有实现接口的话如何代理？</p>
+<h2 id="CGLIB动态代理">CGLIB动态代理</h2>
+<p>在之前的静态代理中，代理类与被代理类实现了同一个接口，从而达到对每个函数进行代理的目的，而在 JDK动态代理中要求被代理的类必须实现至少一个接口，那么如果我们被代理的类没有实现接口的话如何代理？</p>
 <p>CGLIB动态代理模式，以被代理对象作为父类，动态创建一个子类作为代理对象并返回，CGLIB动态代理底层使用了 ASM字节码框架来生成子类，相比较比 Java反射效率要高</p>
 <p>想要使用 CGLIB动态代理需要引入 CGLIB 和 ASM 的 jar 包，这里记录一下两个 jar 包所对应的 maven 坐标：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>cglib<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>cglib<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.3.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.ow2.asm<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>asm<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>9.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
 <blockquote>
 <p>代码实现</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 一个没有实现任何接口的 service 类</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserService</span> &#123;<br>    <span class="hljs-comment">// 添加用户的方法</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">insertUser</span><span class="hljs-params">(String username, String password)</span>&#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-comment">// 假装有DAO层</span><br>        <span class="hljs-comment">// count = userDao.insertUser(username, password);</span><br>        System.out.println(username + <span class="hljs-string">&quot;--&quot;</span> + password);<br>        <span class="hljs-keyword">return</span> count;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 代理类代码</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">LogProxy</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Object <span class="hljs-title function_">getInstance</span><span class="hljs-params">(Object obj)</span>&#123;<br>        <span class="hljs-comment">// 创建CGLIB的工具类</span><br>        <span class="hljs-type">Enhancer</span> <span class="hljs-variable">enhancer</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Enhancer</span>();<br>        enhancer.setSuperclass(obj.getClass());<br>        enhancer.setCallback(<br>            (InvocationHandler)(Object proxy, Method method, Object[] args)-&gt;&#123;<br>                <span class="hljs-type">Object</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> method.invoke(obj, args);<br>                System.out.println(<span class="hljs-string">&quot;用户【&quot;</span> + Arrays.asList(args) + <span class="hljs-string">&quot;】插入成功！&quot;</span>);<br>                <span class="hljs-keyword">return</span> result;<br>            &#125;<br>        );<br>        <span class="hljs-keyword">return</span> enhancer.create();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <p>代理类代码说明：</p>
 <ul>
-<li>【Enhancer】CGLIB中的工具类，通过工具类来动态创建一个新的实例<ul>
+<li>【Enhancer】CGLIB中的工具类，通过工具类来动态创建一个新的实例
+<ul>
 <li>【setSuperclass】设置对象继承的父类，该方法需要传入被代理类的 class 对象</li>
-<li>【setCallback】通过回调的方式实现代理功能，该方法需要传入一个 <code>Callback</code> 对象， 这里使用他下面子接口 <code>InvocationHandler</code>，也就是 JDK动态代理时手动创建的那个对象，由于类型原因在使用的时候使用了强制类型转换<ul>
+<li>【setCallback】通过回调的方式实现代理功能，该方法需要传入一个 <code>Callback</code> 对象， 这里使用他下面子接口 <code>InvocationHandler</code>，也就是 JDK动态代理时手动创建的那个对象，由于类型原因在使用的时候使用了强制类型转换
+<ul>
 <li>【InvocationHandler】函数式接口的三个参数这里就不解释了，记得将 invoke 结果返回即可</li>
 </ul>
 </li>
@@ -441,7 +439,7 @@
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
                   <span class="hint--top hint--rounded" aria-label="BY - Attribution">
-                    <i class="iconfont icon-by"></i>
+                    <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
               
@@ -482,6 +480,41 @@
             </div>
 
             
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'gusheng2000/gusheng2000.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'Comment');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
           </article>
         </div>
       </div>
@@ -584,6 +617,31 @@
     </div>
   
   
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
   
   
 </div>
@@ -772,6 +830,8 @@
   <script  src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
