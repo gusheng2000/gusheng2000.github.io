@@ -1,0 +1,880 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" href="/img/myfavicon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Shi_Kang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="官网 ；https:&#x2F;&#x2F;docs.spring.io&#x2F;spring-data&#x2F;jpa&#x2F;reference&#x2F;index.html   一、spring Data Jpa 介绍  Jpa : JPA（Java Persistence API）是用于在Java应用程序中进行对象持久化的API，用于描述对象-关系映射（ORM）规范（就像java的JDBC规范，每个数据库厂商都有对应的实现）。 Hiber">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring Data Jpa 学习笔记">
+<meta property="og:url" content="http://example.com/2024/05/02/Spring%20Data%20Jpa%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/index.html">
+<meta property="og:site_name" content="Shi_Kang">
+<meta property="og:description" content="官网 ；https:&#x2F;&#x2F;docs.spring.io&#x2F;spring-data&#x2F;jpa&#x2F;reference&#x2F;index.html   一、spring Data Jpa 介绍  Jpa : JPA（Java Persistence API）是用于在Java应用程序中进行对象持久化的API，用于描述对象-关系映射（ORM）规范（就像java的JDBC规范，每个数据库厂商都有对应的实现）。 Hiber">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/jpa/02.png">
+<meta property="article:published_time" content="2024-05-02T12:46:25.000Z">
+<meta property="article:modified_time" content="2024-10-12T02:08:00.583Z">
+<meta property="article:author" content="Shi_Kang">
+<meta property="article:tag" content="spring">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/jpa/02.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Spring Data Jpa 学习笔记 - Shi_Kang</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":null,"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 80vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Shi·s Web Space</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Spring Data Jpa 学习笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-02 20:46" pubdate>
+          May 2, 2024 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          1.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          16 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Spring Data Jpa 学习笔记</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <blockquote>
+<p>官网 ；<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-data/jpa/reference/index.html">https://docs.spring.io/spring-data/jpa/reference/index.html</a></p>
+</blockquote>
+<p><img src="/img/spring-data-jpa-01.png" srcset="/img/loading.gif" lazyload alt="图01"></p>
+<h1>一、spring Data Jpa 介绍</h1>
+<blockquote>
+<p><strong>Jpa</strong> : JPA（Java Persistence API）是用于在Java应用程序中进行对象持久化的API，用于描述对象-关系映射（ORM）规范（就像java的JDBC规范，每个数据库厂商都有对应的实现）。</p>
+<p><strong>Hibernate</strong> ：Hibernate 是一个流行的开源对象-关系映射（ORM）框架，它实现了JPA（Java Persistence API）规范，为Java应用程序提供了数据持久化的解决方案。</p>
+<p><strong>Spring Data JPA</strong>：Spring Data JPA 是 Spring 框架中的一个模块，它简化了对于基于 JPA (Java Persistence API) 的数据访问层的开发。JPA 是 Java EE 中用于对象持久化的标准，而 Spring Data JPA 则在其基础上提供了一系列便捷的功能，帮助开发者更轻松地与数据库进行交互。</p>
+<p><strong>Spring Data:</strong> Spring Data是Spring生态中的一个项目，目标就是简化对数据访问的开发，个人觉得spring的野心很大，它并不限于关系型数据库，还支持文档型数据库，NoSQL数据库。</p>
+</blockquote>
+<p>简单来说 Spring Data Jpa 是spring对Jpa规范的在一次封装，目的就是简化数据库操作。最大特点就是</p>
+<p><strong>Defining Query Methods</strong>定义查询方法。第一次接触的时候感觉很神奇。通过对方法名的解析就能自动生成查询语句。</p>
+<h1>二、快速入门</h1>
+<ol>
+<li>引入maven坐标</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs XML"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-data-jpa<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<ol>
+<li>创建实体类 和 repository接口 还有启动类的开启Jpa ,代码中对应解释</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">package</span> chances.learn.jpa.entity;<br><br><span class="hljs-meta">@Entity</span> <span class="hljs-comment">//@Entity是用来标识实体类，spring会把有这个注解的类</span><br><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@Table(name=&quot;sc_person&quot;)</span>  <span class="hljs-comment">//对应数据库表名，也可以根据name生成属性</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> &#123;<br><br>    <span class="hljs-meta">@Id</span>   <span class="hljs-comment">//标识主键</span><br>    <span class="hljs-meta">@GeneratedValue(strategy = GenerationType.IDENTITY)</span>  <span class="hljs-comment">//主键生成策略</span><br>    <span class="hljs-keyword">private</span> Long id;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> Integer age;<br>&#125;<br><br>-- ------------------------------------------------------------------------<br><span class="hljs-comment">//Repository接口是 Jpa中最核心的接口，</span><br><span class="hljs-comment">// 继承之后例如 findByLastName(String lastName) 将会自动生成根据 lastName 查询实体的方法</span><br><span class="hljs-keyword">package</span> chances.learn.jpa.repo;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">PersonRepository</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Repository</span>&lt;Person, Long&gt; &#123;<br><br>  Person <span class="hljs-title function_">save</span><span class="hljs-params">(Person person)</span>;<br>  Optional&lt;Person&gt; <span class="hljs-title function_">findById</span><span class="hljs-params">(<span class="hljs-type">long</span> id)</span>;<br>&#125;<br><br>-- ------------------------------------------------------------------------<br><span class="hljs-meta">@SpringBootApplication</span><br><span class="hljs-meta">@EnableJpaRepositories(basePackages = &quot;chances.learn.jpa.repo&quot;)</span><br><span class="hljs-meta">@EntityScan(&quot;chances.learn.jpa.repo.entity&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">JpaLearnApplication</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        SpringApplication.run(JpaLearnApplication.class, args);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol>
+<li>我们测试一下看看结果</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-meta">@SpringBootTest</span><br><span class="hljs-meta">@Slf4j</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">JpaLearnApplicationTests</span> &#123;<br>    <span class="hljs-meta">@Resource</span><br>    PersonRepository personRepository;<br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">save</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">Person</span> <span class="hljs-variable">person</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>();<br>        person.setName(<span class="hljs-string">&quot;shichong_update&quot;</span>);<br>        person.setAge(<span class="hljs-number">20</span>);<br>        <span class="hljs-type">Person</span> <span class="hljs-variable">save</span> <span class="hljs-operator">=</span> personRepository.save(person);<br>        log.info(<span class="hljs-string">&quot;sava result：&#123;&#125;&quot;</span>,save.toString());<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://chances.feishu.cn/space/api/box/stream/download/asynccode/?code=MWQxMWVjMTFkZTcxYTJlMGMyZTkzNWZhZWIzNWE2ZmNfUDh1S0M4VWNZSURyc3dRYlVqd1V6QUx3NmhjSXJJN3pfVG9rZW46R2tFNWJQckhab0gxR1h4MlpiRmNtZGxwblpiXzE3MTQ5MDIzMzg6MTcxNDkwNTkzOF9WNA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://chances.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDI2NTAzMDM3ZTRlMmZkZjY5YThhZTBiODk4YjE2ZDNfanpueGc0OTBhcWt0YjJpZXBTUnBMdm5hT1V2WWd5UkZfVG9rZW46V3ZTS2JEMVlEb2NJTnd4TW1VUWMyUFZXblllXzE3MTQ5MDIzMzg6MTcxNDkwNTkzOF9WNA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h1>三、核心接口</h1>
+<p>Spring Data抽象出来的顶层接口是<code> Repository</code>。 直接或间接实现这个接口才有操作数据的能力，不限于关系型数据库，还支持Redis ，MangoDB等。</p>
+<p>Spring data jpa 通过解析方法名自动去生成查询sql。为了简化开发者开发，也提供了一些带有常用查询方法的接口，我们只需要直接实现就可以使用。例如CrudRepository ，ListCrudRepository ,JpaRepository,PagingAndSortingRepository等接口，每一个接口都补充了一些特定的功能下面是我在idea中查看的关系图，</p>
+<p><img src="https://chances.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDU1ZmY3MTZlNjYxZDI3ODkyMGQyZGZlZDYwZGE5ODhfdkNPOElZOWN5MFphajhZMnNyUkFNZzA4V3BxU3MwSUFfVG9rZW46WGZPSWI0dFMwb3EyYjd4eWdNNWNLOGp3blRmXzE3MTQ5MDIzMzg6MTcxNDkwNTkzOF9WNA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="3-1-CrudRepository接口-增删改查接口">3.1 CrudRepository接口 增删改查接口</h2>
+<p>对比实现普通Repository和CrudRepository，看一看UserRepository会发生什么变化</p>
+<ul>
+<li>实现Repository。</li>
+</ul>
+<p><img src="https://chances.feishu.cn/space/api/box/stream/download/asynccode/?code=MWFjODNhNTlhM2YwODU3OGRjNjVhNTUxZWIyYjFiNzhfYTlKNHN3S0xJT3lIMDF5eFdQVE5Qd2szS01nWllwT3BfVG9rZW46UTVVTWJxRUJEb2kyUm94UE5zR2NjOFZSbk5kXzE3MTQ5MDIzMzg6MTcxNDkwNTkzOF9WNA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ul>
+<li>实现CrudRepository</li>
+</ul>
+<p><img src="https://chances.feishu.cn/space/api/box/stream/download/asynccode/?code=NTBiODk3M2M5NjRiNjM3ZGFiOTdiZTI0MjBhOThkMGJfNGFmNFdPaUdaZVhHMTBLR0d4TlppNlQyZHBDM3ZBQW5fVG9rZW46SUpKMmJERjJob2pkZjd4R3lEWWN0OEZ2bklnXzE3MTQ5MDIzMzg6MTcxNDkwNTkzOF9WNA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ul>
+<li>总结，CrudRepository就和我们自己定义的repository是一样的原理，只不过声明好了一些通用的方法，搭配泛型就可以复用一些通用的操作.看一下源码</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-comment">//</span><br><span class="hljs-comment">// Source code recreated from a .class file by IntelliJ IDEA</span><br><span class="hljs-comment">// (powered by FernFlower decompiler)</span><br><span class="hljs-comment">//</span><br><br><span class="hljs-keyword">package</span> org.springframework.data.repository;<br><br><span class="hljs-keyword">import</span> java.util.Optional;<br><br><span class="hljs-meta">@NoRepositoryBean</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">CrudRepository</span>&lt;T, ID&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Repository</span>&lt;T, ID&gt; &#123;<br>    &lt;S <span class="hljs-keyword">extends</span> <span class="hljs-title class_">T</span>&gt; S <span class="hljs-title function_">save</span><span class="hljs-params">(S entity)</span>;<br><br>    &lt;S <span class="hljs-keyword">extends</span> <span class="hljs-title class_">T</span>&gt; Iterable&lt;S&gt; <span class="hljs-title function_">saveAll</span><span class="hljs-params">(Iterable&lt;S&gt; entities)</span>;<br><br>    Optional&lt;T&gt; <span class="hljs-title function_">findById</span><span class="hljs-params">(ID id)</span>;<br><br>    <span class="hljs-type">boolean</span> <span class="hljs-title function_">existsById</span><span class="hljs-params">(ID id)</span>;<br><br>    Iterable&lt;T&gt; <span class="hljs-title function_">findAll</span><span class="hljs-params">()</span>;<br><br>    Iterable&lt;T&gt; <span class="hljs-title function_">findAllById</span><span class="hljs-params">(Iterable&lt;ID&gt; ids)</span>;<br><br>    <span class="hljs-type">long</span> <span class="hljs-title function_">count</span><span class="hljs-params">()</span>;<br><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">deleteById</span><span class="hljs-params">(ID id)</span>;<br><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">delete</span><span class="hljs-params">(T entity)</span>;<br><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">deleteAllById</span><span class="hljs-params">(Iterable&lt;? extends ID&gt; ids)</span>;<br><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">deleteAll</span><span class="hljs-params">(Iterable&lt;? extends T&gt; entities)</span>;<br><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">deleteAll</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>@NoRepositoryBean：  因为继承了repository接口spring会认为他也是一个bean，实际并不是只是中间扩展接口，所以使用@NoRepositoryBean标识一下 就不会当作Bean处理了</li>
+</ul>
+<p>支持分页接口</p>
+<h2 id="3-2-PagingAndSortingRepository-分页排序接口">3.2 PagingAndSortingRepository 分页排序接口</h2>
+<ol>
+<li>使用的时候直接继承这个接口即可,声明一个方法返回结果为 page 字面意思理解就是
+<ol>
+<li>
+<pre><code class="language-Java">package chances.learn.jpa.repo;
+
+import chances.learn.jpa.entity.Person;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.Repository;
+
+import java.util.Optional;
+
+public interface PersonRepository extends CrudRepository&lt;Person, Long&gt;, PagingAndSortingRepository&lt;Person,Long&gt; &#123;
+
+  Person save(Person person);
+  
+  Page&lt;Person&gt; findAll(String name, Pageable pageable);
+
+  Optional&lt;Person&gt; findById(long id);
+
+&#125;
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-number">2</span>. 开始<span class="hljs-selector-tag">unit</span> <span class="hljs-selector-tag">test</span> ，创建分页查询条件时候 使用<span class="hljs-selector-tag">PageRequest</span><span class="hljs-selector-class">.of</span>方法 。看看数据库和结果。<br>   <span class="hljs-number">1</span>. !<span class="hljs-selector-attr">[img]</span>(<span class="hljs-attribute">https</span>:<span class="hljs-comment">//chances.feishu.cn/space/api/box/stream/download/asynccode/?code=MTliOTRmNmQyMDA0ZDZlNGQ2NzFiNjMyYjQ2OWU5YjFfenZtMFJzTlg0R3hKNmlWTno4SWcxTWJBZ2xlUkQ3ZkNfVG9rZW46RDdlRmJsMUFOb0tuVlJ4eWxUS2N2YWRhbjJkXzE3MTQ5MDIzMzg6MTcxNDkwNTkzOF9WNA)</span><br><br>   <span class="hljs-number">2</span>. ![img](<span class="hljs-attribute">https</span>:<span class="hljs-comment">//chances.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTI4YmM1NzA2ZGExMzMzYzE0ZDZhYTUyYTliYmM2YjBfUGhyOUMzUERzQU1XMFZKZk9vWVljM0Ezb3lpSWNiZFRfVG9rZW46TFVCamJmbWpZb3BnaTZ4MXFPcWNFa3hzbmNoXzE3MTQ5MDIzMzg6MTcxNDkwNTkzOF9WNA)</span><br><br>   <span class="hljs-number">3</span>. <span class="hljs-built_in">``</span>`Java<br>      <span class="hljs-variable">@Test</span><br>      void <span class="hljs-built_in">page</span>() &#123;<br>          <span class="hljs-comment">//每页两条 第一页 按照age降序</span><br>          Sort sort = Sort.<span class="hljs-built_in">by</span>(Sort.Direction.DESC, <span class="hljs-string">&quot;age&quot;</span>);<br>          Page&lt;Person&gt; all = personRepository.<span class="hljs-built_in">findAll</span>(PageRequest.<span class="hljs-built_in">of</span>(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>));<br>          log.<span class="hljs-built_in">info</span>(<span class="hljs-string">&quot;page result：&#123;&#125;&quot;</span>,all.<span class="hljs-built_in">toString</span>());<br>      &#125;<br></code></pre></td></tr></table></figure>
+
+</code></pre>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="3-3-JpaRepository-整合了常用的数据库操作">3.3 JpaRepository 整合了常用的数据库操作</h2>
+<p>通过扩展 <code>JpaRepository</code>，继承基本的 CRUD（创建、读取、更新、删除）操作，以及使用 Spring Data 的本地查询进行分页、排序方法。这个接口简化了 Spring 应用程序中数据访问层的开发，减少了与数据库操作通常相关的样板代码。</p>
+<p>在debug的时候发现一件事情，发现PersonRepository经过动态代理之后已经变成了SimpleJpaRepository类型，</p>
+<p><img src="https://chances.feishu.cn/space/api/box/stream/download/asynccode/?code=MTRjZWU3ODZjMDIxNDEwNjJhNGU1ZjhjZjEzZGQxNzVfamFsRDNRU2VBNGtWMXFOZUY2V2ZOT0sySnhCVFU5N0hfVG9rZW46TlJyemJhUTFab0ZDbWt4YUdPRGM0NHZvbmhnXzE3MTQ5MDIzMzg6MTcxNDkwNTkzOF9WNA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h1>四、Defining Query Methods 定义查询方法（Jpa特色）</h1>
+<p><img src="https://chances.feishu.cn/space/api/box/stream/download/asynccode/?code=ZGI3MDM5ZDY3MzJhYzI1OGJiZGYzNjc3NDNjMGVjZjNfSXlEdG5YQmxGR3d6dmxRWHZ4VnQySjNLMG5LaFo2VXVfVG9rZW46VXlXT2JGS0ZSb3J1ZTl4UXRZMGNhQWt5bmhjXzE3MTQ5MDIzMzg6MTcxNDkwNTkzOF9WNA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>Defining Query Method是Jpa的一大特性。定义查询方法有官网说明<strong>提供了两种方式</strong>。第一种 通过直接从方法名称解析后查询，第二种 通过手动定义方式的来执行。</p>
+<p>简单示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-comment">//第一种 没有sql直接解析方法名</span><br>Optional&lt;LoginToken&gt; <span class="hljs-title function_">findByUserId</span><span class="hljs-params">(String userId)</span>;<br><br><span class="hljs-comment">//第二种</span><br><span class="hljs-meta">@Query(&quot;select e from SysUser e where e.userName = :userName and e.deleted = false&quot;)</span><br>Optional&lt;SysUser&gt; <span class="hljs-title function_">findByUserName</span><span class="hljs-params">(<span class="hljs-meta">@Param(&quot;userName&quot;)</span> String userName)</span>;<br></code></pre></td></tr></table></figure>
+<h2 id="4-1-Query-Lookup-Strategies查询查找策略">4.1 Query Lookup Strategies查询查找策略</h2>
+<p><img src="https://chances.feishu.cn/space/api/box/stream/download/asynccode/?code=ZGU4ZDI1MGFkNTRlNTU3ZjRmNmY1MDdmMGIwNmEyMTRfeld5UWpiQ0lPb2ZWOWlHVElLUVE2VUN3Z3V0NmtEQ1VfVG9rZW46Unk5S2JJTFE3b0lWZG14dDVFRGNPaWJwblFmXzE3MTQ5MDIzMzg6MTcxNDkwNTkzOF9WNA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>在 Spring Data JPA 中，有两种主要的方式来定义查询方法：基于方法名的命名约定和使用 <code>@Query</code> 注解定义的自定义查询。查询查找策略决定了 Spring Data JPA 在执行方法时应该优先考虑哪种方式。官网中告诉我们一共有三种选择策略模式，和如何切换查找策略。</p>
+<ul>
+<li><code>CREATE</code> 从方法名解析删除指定的前缀 例如 find,findAll，然后解析方法名的其余部分。也就是直接根据方法名创建查询。如果方法名不符合规则启动会报异常，及时配置了 <code>@query</code> 注解</li>
+<li><em><code>USE_DECLARED_QUERY</code></em> <em>使用声明好的查询，也就是使用</em>*<code>@query</code>* <em>注解声明的查询，如果没找到也会抛出异常。</em></li>
+<li><code>CREATE_IF_NOT_FOUND</code> 这是默认的查找策略，先去使用<code>@Quer</code>y声明好的查询，如果找不到再去使用通过方法名创建查询。</li>
+</ul>
+<p>更改默认的策略修改<code>@EnableJpaRepositories</code>的queryLookupStrategy属性即可。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">package</span> chances.learn.jpa;<br><br><span class="hljs-meta">@SpringBootApplication</span><br><span class="hljs-meta">@EnableJpaRepositories(basePackages=&quot;chances.learn.jpa.repo&quot;, queryLookupStrategy= QueryLookupStrategy.Key.CREATE)</span><br><span class="hljs-meta">@EntityScan(&quot;chances.learn.jpa.entity&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">JpaLearnApplication</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        SpringApplication.run(JpaLearnApplication.class, args);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="4-2-通过方法名解析查询">4.2 通过方法名解析查询</h2>
+<p>下面是官网给出的示例，可以看出方法名是通过<strong>前缀+字段名+字段描述符</strong>+…组成</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">PersonRepository</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Repository</span>&lt;Person, Long&gt; &#123;<br>    <br>  List&lt;Person&gt; <span class="hljs-title function_">findByEmailAddressAndLastname</span><span class="hljs-params">(EmailAddress emailAddress, String lastname)</span>;<br><br>  <span class="hljs-comment">// Enables the distinct flag for the query</span><br>  List&lt;Person&gt; <span class="hljs-title function_">findDistinctPeopleByLastnameOrFirstname</span><span class="hljs-params">(String lastname, String firstname)</span>;<br>  List&lt;Person&gt; <span class="hljs-title function_">findPeopleDistinctByLastnameOrFirstname</span><span class="hljs-params">(String lastname, String firstname)</span>;<br><br>  <span class="hljs-comment">// Enabling ignoring case for an individual property</span><br>  List&lt;Person&gt; <span class="hljs-title function_">findByLastnameIgnoreCase</span><span class="hljs-params">(String lastname)</span>;<br>  <span class="hljs-comment">// Enabling ignoring case for all suitable properties</span><br>  List&lt;Person&gt; <span class="hljs-title function_">findByLastnameAndFirstnameAllIgnoreCase</span><span class="hljs-params">(String lastname, String firstname)</span>;<br><br>  <span class="hljs-comment">// Enabling static ORDER BY for a query</span><br>  List&lt;Person&gt; <span class="hljs-title function_">findByLastnameOrderByFirstnameAsc</span><span class="hljs-params">(String lastname)</span>;<br>  List&lt;Person&gt; <span class="hljs-title function_">findByLastnameOrderByFirstnameDesc</span><span class="hljs-params">(String lastname)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>前缀不仅有find还有 count，delete,remove等其他的前缀。每个版本可能支持的都不一样可以看看Jpa的查询解析语法树看看。 <code>org.springframework.data.repository.query.parser.PartTree</code></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">org<span class="hljs-selector-class">.springframework</span><span class="hljs-selector-class">.data</span><span class="hljs-selector-class">.repository</span><span class="hljs-selector-class">.query</span><span class="hljs-selector-class">.parser</span><span class="hljs-selector-class">.Part</span>.Type<br></code></pre></td></tr></table></figure>
+<p><img src="https://chances.feishu.cn/space/api/box/stream/download/asynccode/?code=YWJhNDAzMmM3ZTkyZjBjNzA5ZDBkNjNiZTRhNzJhZDRfeldSa1QzU0xySkNyVFd6cWtsc01kNE9GclpHOWFkWFhfVG9rZW46TlVWNGJsS09Eb0NlQ1p4T2VNb2NZY3FwbklnXzE3MTQ5MDIzMzg6MTcxNDkwNTkzOF9WNA" srcset="/img/loading.gif" lazyload alt="img"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/" class="category-chain-item">开发框架</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/spring/" class="print-no-link">#spring</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Spring Data Jpa 学习笔记</div>
+      <div>http://example.com/2024/05/02/Spring Data Jpa学习心得/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Shi_Kang</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>May 2, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/07/31/Java%E7%AC%94%E8%AE%B0/Netty%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%8C/" title="Netty学习笔记">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Netty学习笔记</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/09/13/SpringSecurity%E7%AC%94%E8%AE%B0/" title="Spring Security">
+                        <span class="hidden-mobile">Spring Security</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'gusheng2000/gusheng2000.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'Comment');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>skr</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
