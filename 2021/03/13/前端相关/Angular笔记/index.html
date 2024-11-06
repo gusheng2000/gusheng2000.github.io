@@ -1,0 +1,1037 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" href="/img/myfavicon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Shi_Kang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Angular 脚手架 Angular 环境搭建 安装  angular8 需要 node 版本最低是 10.13，我的 node 是 8.17.0，那么就指定版本安装 123# 查看版本，低于要求请跟新版本node -vnpm -v 1234# 安装typescript，可跳过npm install -g typescript# 安装 angularnpm install @angular&#x2F;cl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular脚手架">
+<meta property="og:url" content="http://example.com/2021/03/13/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/Angular%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Shi_Kang">
+<meta property="og:description" content="Angular 脚手架 Angular 环境搭建 安装  angular8 需要 node 版本最低是 10.13，我的 node 是 8.17.0，那么就指定版本安装 123# 查看版本，低于要求请跟新版本node -vnpm -v 1234# 安装typescript，可跳过npm install -g typescript# 安装 angularnpm install @angular&#x2F;cl">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s2.loli.net/2023/11/26/GyIdrAsehtBv1ug.png">
+<meta property="article:published_time" content="2021-03-13T12:46:25.000Z">
+<meta property="article:modified_time" content="2024-10-12T02:08:00.584Z">
+<meta property="article:author" content="Shi_Kang">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2023/11/26/GyIdrAsehtBv1ug.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Angular脚手架 - Shi_Kang</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":null,"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 80vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Shi·s Web Space</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Angular脚手架"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-03-13 20:46" pubdate>
+          March 13, 2021 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          5.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          44 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Angular脚手架</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1>Angular 脚手架</h1>
+<p>Angular 环境搭建</p>
+<p>安装  angular8 需要 node 版本最低是 <code>10.13</code>，我的 node 是 <code>8.17.0</code>，那么就指定版本安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看版本，低于要求请跟新版本</span></span><br><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装typescript，可跳过</span></span><br><span class="line">npm install -g typescript</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装 angular</span></span><br><span class="line">npm install @angular/cli@7.3.6 -g</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">可以使用当前命令查看是否安装成功</span></span><br><span class="line">ng v</span><br></pre></td></tr></table></figure>
+<h2 id="创建一个程序">创建一个程序</h2>
+<p>安装完成后创建一个angular 程序，使用 <code>ng new 项目名称</code>，创建项目时有两个步骤需要操作：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">是否安装Angular的路由组件</span></span><br><span class="line">? Would you like to add Angular routing? (y/N)</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">选择需要使用的样式表文件</span></span><br><span class="line">Which stylesheet format would you like to use? (Use arrow keys)</span><br></pre></td></tr></table></figure>
+<p>项目创建完成后，在控制台输入 <code>ng serve</code> 便可以运行 angular 程序，也可以使用 <code>npm start</code>，效果是一样的，angular 的默认端口号为 4200</p>
+<h2 id="目录结构讲解">目录结构讲解</h2>
+<p>在 angular 生成的目录结构中，有一些是比较重要的，一定要了解：</p>
+<ul>
+<li><code>e2e</code> 前端测试模块</li>
+<li><code>node_modules</code> 类似 java 中的 lib，添加的所有组件都会存放在该文件夹下</li>
+<li><code>src</code> 编写 angular 项目都在当前目录下进行操作
+<ul>
+<li><code>app</code> 为组件目录，angular 中的所有组件都是放在 app 目录下进行存放的
+<ul>
+<li><code>app.module.ts</code>  根模块，用来注册组件</li>
+<li><code>app-routing.module.ts</code> 路由组件</li>
+</ul>
+</li>
+<li><code>assets</code> 资源目录，需要引用的图片或字体文件等等可以放在该目录下</li>
+<li><code>environments</code> 环境配置，可以针对各种环境编写不一样的配置文件</li>
+<li><code>browserslist</code> 配置浏览器支持</li>
+<li><code>index.html</code> Angular 依靠组件进行单页面开发，最终会挂在到 index.html 文件中</li>
+<li><code>main.ts</code> 项目的入口文件</li>
+<li><code>polyfills.ts</code> 填充库文件</li>
+<li><code>styles.css</code> 引用全局性质的样式文件 ( 例如 bootstrap 的样式文件 )</li>
+</ul>
+</li>
+</ul>
+<h2 id="组件的创建及使用">组件的创建及使用</h2>
+<p>在 vue 中，组件有三部分组成，分别是 html 部分，js 部分，css 部分，angular 中的组件也是同理，不过 vue 中的三种类型代码在同一个文件中编写，而 angular 的组件是分开编写的</p>
+<blockquote>
+<p>组件内部的html代码及css样式都是单独的文件进行组合而成的</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入angular核心功能</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Component</span>, <span class="title class_">OnInit</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line"><span class="comment">// 组合当前组件的html及css代码</span></span><br><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">  <span class="attr">selector</span>: <span class="string">&#x27;app-login&#x27;</span>, <span class="comment">// 使用组件的组件名称</span></span><br><span class="line">  <span class="attr">templateUrl</span>: <span class="string">&#x27;./login.component.html&#x27;</span>,  <span class="comment">// 引用的html代码</span></span><br><span class="line">  <span class="attr">styleUrls</span>: [<span class="string">&#x27;../app.component.css&#x27;</span>]     <span class="comment">// 引用的css代码</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 将对象暴露出去</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">LoginComponent</span> <span class="keyword">implements</span> <span class="title class_">OnInit</span>&#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;&#125;  <span class="comment">// 构造方法，执行优先级最高</span></span><br><span class="line">  <span class="title function_">ngOnInit</span>(<span class="params"></span>) &#123;&#125;     <span class="comment">// 生命周期函数，是OnInit中实现的接口方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>组件创建完成后需要在 <code>app.module.ts</code> 文件中使用 import 引用并在 declarations 中注册：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">LoginComponent</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;./login/login.component&#x27;</span>;</span><br><span class="line"><span class="meta">@NgModule</span>(&#123;</span><br><span class="line">  省略...</span><br><span class="line">  <span class="attr">declarations</span>: [</span><br><span class="line">    <span class="title class_">LoginComponent</span></span><br><span class="line">  ],</span><br><span class="line">  省略...</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">AppModule</span> &#123; &#125;</span><br></pre></td></tr></table></figure>
+<hr />
+创建组件其实可以不需要引用多个文件，完全可以一个文件来书写组件，只不过有些麻烦：
+<blockquote>
+<p>将外部的代码集成到该文件中，降低了可读性且不方便，不推荐使用</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Component</span>, <span class="title class_">OnInit</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">  <span class="attr">selector</span>: <span class="string">&#x27;app-login&#x27;</span>,</span><br><span class="line">  <span class="attr">template</span>: <span class="string">`&lt;h1&gt;这里写html代码&lt;/h1&gt;`</span>,</span><br><span class="line">  <span class="attr">style</span>: <span class="string">`这里写css代码`</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">LoginComponent</span> <span class="keyword">implements</span> <span class="title class_">OnInit</span>&#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line">  <span class="title function_">ngOnInit</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+这是最方便的创建组件的方法，在当前项目目录下，使用命令 `ng g component 组件名` 即可在 app 目录下创建一个以组件名命名的文件夹，里面的文件关联及 `app.module.ts` 的注册都自动配置成功，直接去使用即可！~
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在app目录下创建一个user组件</span></span><br><span class="line">ng g component user</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在user组件下创建一个login组件</span></span><br><span class="line">ng g component user/login</span><br></pre></td></tr></table></figure>
+<h2 id="app-module-ts-配置文件">app.module.ts 配置文件</h2>
+<p>正常在我们创建组件的时候会在该配置文件下进行注册以便使用，但是 <code>app.module.ts</code> 的功能远不止注册组件</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入浏览器的解析模块，用来解析组件</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">BrowserModule</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/platform-browser&#x27;</span>;</span><br><span class="line"><span class="comment">// angular的核心组件，必须引用</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">NgModule</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注册组件之前需要将被注册的组件引用到当前文件中</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">AppRoutingModule</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;./app-routing.module&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">AppComponent</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;./app.component&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">LoginComponent</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;./login/login.component&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">RegisterComponent</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;./register/register.component&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">GetComponent</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;./get/get.component&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">HttpClientModule</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/common/http&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@NgModule</span>(&#123;</span><br><span class="line">  <span class="comment">// 注册组件-自己创建的组件</span></span><br><span class="line">  <span class="attr">declarations</span>: [</span><br><span class="line">    <span class="title class_">AppComponent</span>,</span><br><span class="line">    <span class="title class_">LoginComponent</span>,</span><br><span class="line">    <span class="title class_">RegisterComponent</span>,</span><br><span class="line">    <span class="title class_">GetComponent</span>,</span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 注册模块-Angular提供的功能模块，默认是不使用的，需要引用后在这里注册</span></span><br><span class="line">  <span class="attr">imports</span>: [</span><br><span class="line">    <span class="title class_">BrowserModule</span>,</span><br><span class="line">    <span class="title class_">AppRoutingModule</span>,</span><br><span class="line">    <span class="title class_">HttpClientModule</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 配置项目中需要开启的服务</span></span><br><span class="line">  <span class="attr">providers</span>: [],</span><br><span class="line">  <span class="attr">bootstrap</span>: [<span class="title class_">AppComponent</span>]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">AppModule</span> &#123; &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="组件模板的书写">组件模板的书写</h2>
+<p>angular 的组件主要是一个 typescript 组件，在组件内可以定义变量及函数，定义变量时需要携带修饰符及类型：</p>
+<p>修饰符：【public】【private】【protected】</p>
+<p>类型分为以下几种：</p>
+<ul>
+<li>布尔类型 boolean</li>
+<li>数字类型 number</li>
+<li>字符串类型 string</li>
+<li>对象类型 object</li>
+<li>数组类型 array</li>
+<li>元祖类型 tuple</li>
+<li>枚举类型： enum</li>
+<li>任意类型 any</li>
+<li>空类型 null undefined void never</li>
+</ul>
+<p>定义一个标准的变量：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">LoginComponent</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="attr">name</span>:<span class="built_in">string</span> = <span class="string">&#x27;张涵哲&#x27;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="attr">list</span>:<span class="built_in">any</span>[] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="数据绑定指令">数据绑定指令</h3>
+<p>一般在 html 中会使用一些在 ts 中定义好的变量，可以直接使用 <code>&#123;&#123;&#125;&#125;</code> 来进行调用，针对标签中的属性也可以使用花括号传值，但是除开这个方法之外还可以使用 <strong>[ 属性 ] 数据绑定</strong> 来实现目标效果</p>
+<blockquote>
+<p>例如有一个变量为 msg=‘我是一个title’</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 数据调用 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 绑定数据到属性中 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> [<span class="attr">title</span>]=<span class="string">&quot;msg&quot;</span> &gt;</span>这是一个div标签<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 将数据解析为html标记语言 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> [<span class="attr">innerHTML</span>]=<span class="string">&quot;msg&quot;</span> &gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="流程控制指令">流程控制指令</h3>
+<p><strong>流程控制指令分为循环和判断</strong></p>
+<blockquote>
+<p>*ngFor 循环指令</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> *<span class="attr">ngFor</span>=<span class="string">&quot;let item of list; let key=index&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123;key&#125;&#125;--&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>*ngIf 判断指令</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> *<span class="attr">ngFor</span>=<span class="string">&quot;let item of list; let key=index&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> *<span class="attr">ngIf</span>=<span class="string">&quot;key%2==1&quot;</span> <span class="attr">style</span>=<span class="string">&quot;color: red;&quot;</span>&gt;</span>&#123;&#123;key&#125;&#125;--&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> *<span class="attr">ngIf</span>=<span class="string">&quot;key%2==0&quot;</span> <span class="attr">style</span>=<span class="string">&quot;color: blue;&quot;</span>&gt;</span>&#123;&#123;key&#125;&#125;--&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>ngSwitch 分支语句</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> [<span class="attr">ngSwitch</span>]=<span class="string">&quot;state&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> *<span class="attr">ngSwitchCase</span>=<span class="string">&quot;&#x27;1&#x27;&quot;</span> <span class="attr">style</span>=<span class="string">&quot;color: blueviolet&quot;</span>&gt;</span>星期1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> *<span class="attr">ngSwitchCase</span>=<span class="string">&quot;2&quot;</span> <span class="attr">style</span>=<span class="string">&quot;color: blueviolet&quot;</span>&gt;</span>星期2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> *<span class="attr">ngSwitchCase</span>=<span class="string">&quot;&#x27;3&#x27;&quot;</span> <span class="attr">style</span>=<span class="string">&quot;color: blueviolet&quot;</span>&gt;</span>星期3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> *<span class="attr">ngSwitchCase</span>=<span class="string">&quot;&#x27;4&#x27;&quot;</span> <span class="attr">style</span>=<span class="string">&quot;color: blueviolet&quot;</span>&gt;</span>星期4<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> *<span class="attr">ngSwitchCase</span>=<span class="string">&quot;&#x27;5&#x27;&quot;</span> <span class="attr">style</span>=<span class="string">&quot;color: blueviolet&quot;</span>&gt;</span>星期5<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> *<span class="attr">ngSwitchDefault</span> <span class="attr">style</span>=<span class="string">&quot;color: blueviolet&quot;</span>&gt;</span>今天放假！<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="动态改变样式">动态改变样式</h3>
+<p><strong>动态操作class</strong></p>
+<blockquote>
+<p>这里定义了 boolean 类型的 flag，可以通过操作 flag 属性动态修改 class 属性，class 属性需要单引号</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> [<span class="attr">ngClass</span>]=<span class="string">&quot;&#123;&#x27;color-red&#x27;: flag, &#x27;color-blue&#x27;: !flag&#125;&quot;</span>&gt;</span>这是一个div标签<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>动态操作 style</strong></p>
+<blockquote>
+<p>和 class 类似，在 ngStyle 中可以直接为属性赋值，也可以使用变量赋值实现动态效果</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> [<span class="attr">ngStyle</span>]=<span class="string">&quot;&#123;&#x27;color&#x27;: &#x27;red&#x27;, &#x27;background-color&#x27;: cor&#125;&quot;</span>&gt;</span>这是一个div标签<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Angular-管道">Angular 管道</h3>
+<p>管道，就相当于 vue 中的过滤器，当使用管道后原本输出的内容会被管道进行处理，显示的是处理后的内容</p>
+<p><strong>常用管道：</strong></p>
+<table>
+<thead>
+<tr>
+<th>管道</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uppercase</td>
+<td>将所有字母转换为大写字母</td>
+</tr>
+<tr>
+<td>lowercase</td>
+<td>将所有字母转换为小写字母</td>
+</tr>
+<tr>
+<td>date:‘yyyy-MM-dd HH:mm:ss’</td>
+<td>将data时间进行格式化，后面跟上格式化的样式</td>
+</tr>
+<tr>
+<td>number:‘1.2-4’</td>
+<td>小数格式化，最小有一个整数位，小数位至少2个，最多4个</td>
+</tr>
+<tr>
+<td>json</td>
+<td>将 object 对象解析为 json 字符串</td>
+</tr>
+</tbody>
+</table>
+<p><strong>使用管道：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>管道处理打印的date对象：&#123;&#123;time | date:&#x27;yyyy-MM-dd HH:mm:ss&#x27;&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>自定义管道：</strong></p>
+<h3 id="表单事件">表单事件</h3>
+<p>在使用表单事件之前需要先掌握普通事件如何调用：</p>
+<blockquote>
+<p>==使用括号 ( ) 将事件名称括起来==，然后在指定事件触发后执行的代码即可</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">func1</span>(<span class="params"></span>)&#123;  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;这是点击事件&quot;</span>)   &#125;</span><br><span class="line"><span class="title function_">func2</span>(<span class="params"></span>)&#123;  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;这是滑过事件&quot;</span>)   &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> (<span class="attr">click</span>)=<span class="string">&quot;func1()&quot;</span>&gt;</span>点击事件<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> (<span class="attr">mousemove</span>)=<span class="string">&quot;func2()&quot;</span>&gt;</span>滑过事件<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>表单事件</strong></p>
+<blockquote>
+<p>在键盘按下时传入了一个 $event 参数，通过这个参数可以获取到表单相关的信息</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">down</span>(<span class="params"> e </span>)&#123;  <span class="variable language_">console</span>.<span class="title function_">log</span>( e );  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">监听键盘按下事件<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> (<span class="attr">keydown</span>)=<span class="string">&quot;down($event)&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="双向数据绑定">双向数据绑定</h3>
+<p><font color="red">在 angular 中想要使用双向绑定，必须要在 <code>app.module.ts</code> 中引用模块：</font></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;<span class="title class_">FormsModule</span>&#125; <span class="keyword">from</span> <span class="string">&quot;@angular/forms&quot;</span>;</span><br><span class="line"><span class="attr">imports</span>: [ <span class="title class_">FormsModule</span> ]</span><br></pre></td></tr></table></figure>
+<p>在引入了双向绑定的模块之后就可以进行使用了：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>Angular 的双向绑定<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">单向绑定测试 <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> [<span class="attr">value</span>]=<span class="string">&quot;msg1&quot;</span>&gt;</span> &#123;&#123;msg1&#125;&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">双向绑定测试 <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> [(<span class="attr">ngModel</span>)]=<span class="string">&quot;msg2&quot;</span>&gt;</span> &#123;&#123;msg2&#125;&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+**表单双向绑定实例：**
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="attr">model</span>:<span class="built_in">object</span> = &#123;</span><br><span class="line">    <span class="attr">username</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">sex</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">likes</span>: [<span class="literal">false</span>, <span class="literal">false</span>, <span class="literal">false</span>],</span><br><span class="line">    <span class="attr">address</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">birthday</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;content&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>表单&amp;angular交互联系<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    姓名:</span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> [(<span class="attr">ngModel</span>)]=<span class="string">&quot;model.username&quot;</span>&gt;</span> </span><br><span class="line">    &#123;&#123;model.username&#125;&#125;<span class="tag">&lt;<span class="name">br</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    性别：</span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> [(<span class="attr">ngModel</span>)]=<span class="string">&quot;model.sex&quot;</span> <span class="attr">id</span>=<span class="string">&quot;sex1&quot;</span> <span class="attr">value</span>=<span class="string">&quot;男&quot;</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;sex1&quot;</span>&gt;</span>男<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> [(<span class="attr">ngModel</span>)]=<span class="string">&quot;model.sex&quot;</span> <span class="attr">id</span>=<span class="string">&quot;sex2&quot;</span> <span class="attr">value</span>=<span class="string">&quot;女&quot;</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;sex2&quot;</span>&gt;</span>女<span class="tag">&lt;/<span class="name">label</span>&gt;</span> --- &#123;&#123;model.sex&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    爱好：</span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> [(<span class="attr">ngModel</span>)]=<span class="string">&quot;model.likes[0]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;运动&quot;</span> <span class="attr">id</span>=<span class="string">&quot;like1&quot;</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;like1&quot;</span>&gt;</span>运动<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> [(<span class="attr">ngModel</span>)]=<span class="string">&quot;model.likes[1]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;游戏&quot;</span> <span class="attr">id</span>=<span class="string">&quot;like2&quot;</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;like2&quot;</span>&gt;</span>游戏<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> [(<span class="attr">ngModel</span>)]=<span class="string">&quot;model.likes[2]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;编程&quot;</span> <span class="attr">id</span>=<span class="string">&quot;like3&quot;</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;like3&quot;</span>&gt;</span>编程<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    &#123;&#123;model.likes | json&#125;&#125;<span class="tag">&lt;<span class="name">br</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    住址：</span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> [(<span class="attr">ngModel</span>)]=<span class="string">&quot;model.address&quot;</span> <span class="attr">name</span>=<span class="string">&quot;address&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;沈阳&quot;</span>&gt;</span>沈阳<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;青岛&quot;</span>&gt;</span>青岛<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;大连&quot;</span>&gt;</span>大连<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">    --- &#123;&#123;model.address&#125;&#125;<span class="tag">&lt;<span class="name">br</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    生日：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;date&quot;</span> [(<span class="attr">ngModel</span>)]=<span class="string">&quot;model.birthday&quot;</span> &gt;</span></span><br><span class="line">    -- &#123;&#123;model.birthday&#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><font color="red">双向绑定在 form 表单内无效</font></p>
+<h3 id="静态资源调用问题">静态资源调用问题</h3>
+<p>在 angular 的组件模板中调用静态资源文件，例如图片字体等等，首先要知道静态资源存放目录是 <code>assets</code> 目录下，引用也无需使用 <code>./ 或者 ../</code> 之类，直接访问该目录即可：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 无视目录，直接使用assetc即可访问目标文件夹  --&gt;</span></span><br><span class="line">&lt;/img src=&quot;assets/google.jpg&quot; title=&quot;这是一张图片&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="服务的创建和使用">服务的创建和使用</h2>
+<p>在 angular 有服务这样一个概念，可以在服务中存放属性或方法，可以在各个组件对其进行调用，我姑且把它理解为 angular 版的 vuex</p>
+<p>服务同组件一样，需要先创建他，创建服务的方法：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ng g service 服务名</span><br></pre></td></tr></table></figure>
+<p>这样在 app 目录下就会生成两个服务文件，创建完成后还不能立即使用，需要到 <code>app.module.ts</code> 文件中 import 引用并在 providers 处注册服务，这样才可以使用该服务</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;<span class="title class_">GetService</span>&#125; <span class="keyword">from</span> <span class="string">&#x27;./service/get/get.service&#x27;</span>;</span><br><span class="line"><span class="attr">providers</span>: [<span class="title class_">GetService</span>],</span><br></pre></td></tr></table></figure>
+<p><strong>使用服务</strong></p>
+<p>在组件中使用服务，同样也要使用 import 引用该服务，然后可以直接 new 将服务实例化使用</p>
+<blockquote>
+<p>实例化要再和 import 同级位置进行实例化</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;<span class="title class_">Component</span>, <span class="title class_">OnInit</span>&#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;<span class="title class_">GetService</span>&#125; <span class="keyword">from</span> <span class="string">&quot;../service/get/get.service&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> get = <span class="keyword">new</span> <span class="title class_">GetService</span>();</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">    <span class="attr">selector</span>: <span class="string">&#x27;app-model02&#x27;</span>,</span><br><span class="line">    <span class="attr">templateUrl</span>: <span class="string">&#x27;./model02.component.html&#x27;</span>,</span><br><span class="line">    <span class="attr">styleUrls</span>: [<span class="string">&#x27;./model02.component.css&#x27;</span>]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">Model02Component</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(get.<span class="property">msg</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样就通过实例化对象的方法使用了服务，但是 angular 并不推荐这么使用，所以正常应该这样：</p>
+<blockquote>
+<p>在方法内使用 get 属性来代替 GetService 实例化的过程</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">constructor</span>(<span class="params"><span class="keyword">public</span> get:GetService</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(get.<span class="property">msg</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在构造方法中声明的属性，在当前实例中任何位置都可以调用</li>
+<li>get 服务可以在多个组件同时生效，在第一个组件对服务内的属性进行修改，那么第二个组件会看到第一个组件修改后的参数，可以当成 vue 中的状态管理进行使用</li>
+</ul>
+<p><strong>服务的调用问题：</strong></p>
+<ul>
+<li>
+<p>组件于服务之间是单向通信，也就是组件可以调用服务的方法及属性，但是服务不能调用组件</p>
+</li>
+<li>
+<p>但是服务和服务之间是双向通信，也就是服务于服务之间可以互相调用</p>
+</li>
+</ul>
+<h2 id="DOM操作及生命周期函数">DOM操作及生命周期函数</h2>
+<h3 id="OnInit-函数">OnInit 函数</h3>
+<p>在使用命令创建一个 angular 组件的时候，ts 文件中的 class 会默认的实现一个接口：<code>OnInit</code>，且复写了其中的ngOnInit 做为生命周期方法</p>
+<blockquote>
+<p>ngOninit 方法的执行时机是在原生 dom 加载完毕后：</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;p1&quot;</span>&gt;</span>这是第一个p标签<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;p2&quot;</span> [<span class="attr">innerText</span>]=<span class="string">&quot;str&quot;</span>&gt;</span>这是第二个p标签<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="attr">str</span>:<span class="built_in">string</span> = <span class="string">&quot;我是angular中的值&quot;</span>;</span><br><span class="line"><span class="title function_">ngOnInit</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 使用dom操作p1</span></span><br><span class="line">    <span class="keyword">let</span> <span class="attr">p1</span>:<span class="built_in">any</span> = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;p1&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(p1.<span class="property">innerText</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用dom操作p2</span></span><br><span class="line">    <span class="keyword">let</span> <span class="attr">p2</span>:<span class="built_in">any</span> = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;p2&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(p2.<span class="property">innerText</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以发现，在 ngOnInit 方法中获取的两个 dom 节点的内容，都是原生的内容，使用 angular 对 p2 进行的赋值并没有被 dom 获取到，所以一般不建议在 ngOnInit 方法中操作 dom</p>
+<h3 id="ngAfterViewInit-函数">ngAfterViewInit 函数</h3>
+<p>那么除开 ngOnInit 函数之外，还有一个生命周期函数就是 <code>ngAfterViewInit</code>，他并不是从接口中复写而来的，而是当前 class 默认自带的生命周期函数</p>
+<blockquote>
+<p>ngAfterViewInit 执行时机是当前dom加载完毕且于angular结合后</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;p1&quot;</span>&gt;</span>这是第一个p标签<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;p2&quot;</span> [<span class="attr">innerText</span>]=<span class="string">&quot;str&quot;</span>&gt;</span>这是第二个p标签<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="attr">str</span>:<span class="built_in">string</span> = <span class="string">&quot;我是angular中的值&quot;</span>;</span><br><span class="line">ngAfterViewInit () &#123;</span><br><span class="line">    <span class="comment">// 使用dom操作p1</span></span><br><span class="line">    <span class="keyword">let</span> <span class="attr">p1</span>:<span class="built_in">any</span> = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;p1&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(p1.<span class="property">innerText</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用dom操作p2</span></span><br><span class="line">    <span class="keyword">let</span> <span class="attr">p2</span>:<span class="built_in">any</span> = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;p2&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(p2.<span class="property">innerText</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以发现，如果在当前生命周期函数下操作 dom，获取到的 p2 的值是经过 angular 处理过的值，所以如果在程序中要对 dom 进行操作的话建议在当前方法下进行操作</p>
+<h3 id="ViewChild-操作-DOM">ViewChild 操作 DOM</h3>
+<p>在 angular 中操作 dom，除开使用原生的 js 代码之外，还可以使用 angular 提供的 <code>ViewChild</code> 进行操作</p>
+<blockquote>
+<p>angular 的组件中默认时不支持使用 ViewChild 的，需要先添加他的引用才可以使用，添加引用的方法是：</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;<span class="title class_">Component</span>, <span class="title class_">OnInit</span>, <span class="title class_">ViewChild</span>&#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>引用添加完成后，对要获取 dom 对象的标签使用 # 进行标识</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> #<span class="attr">ps</span> <span class="attr">id</span>=<span class="string">&quot;p2&quot;</span> [<span class="attr">innerText</span>]=<span class="string">&quot;str&quot;</span>&gt;</span>我是一个p标签<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>而后在组件中获取当前节点的 dom 对象，获取到之后就可以对他进行正常的 dom 操作了</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="attr">flag</span>:<span class="built_in">string</span> = <span class="string">&quot;我是angular中的值&quot;</span>;</span><br><span class="line"><span class="meta">@ViewChild</span>(<span class="string">&quot;ps&quot;</span>) <span class="attr">ps</span>:<span class="built_in">any</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_">ngAfterViewInit</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">ps</span>.<span class="property">nativeElement</span>.<span class="property">innerText</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>需要注意的是：</p>
+<ol>
+<li>ViewChild 将 dom 对象封装在了自身的 nativeElement 属性中，操作 dom 需要先调用他</li>
+<li><font color="red">无论是原生 js 操作 dom 还是 ViewChild 操作dom，都要在 ngAfterViewInit 函数中，原因是一样的</font></li>
+</ol>
+<h3 id="所有生命周期函数">所有生命周期函数</h3>
+<p>上面只介绍了 ngOnInit 和 ngAfterViewInit 两个生命周期函数，也是最为常用的生命周期函数，在 Angular 中的生命周期函数远不止这两个，这里就要详细演示一下所有的生命周期函数</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">LifeComponent</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="attr">msg</span>:<span class="built_in">string</span> = <span class="string">&quot;组件中的msg&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1-构造函数---除了使用简单的值对局部变量进行初始化之外，什么都不应该做&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="title function_">ngOnChanges</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;2-ngOnChages--- 当父组件向子组件传值 或被传入到子组件的值发生变化时执行&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">ngOnInit</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;3-ngOnInit--- 一般将初始化时的Ajax写在这里&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">ngDoCheck</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;4-ngDoCheck--- 检测作用，当前实例中的某个属性被改变时执行&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">ngAfterContentInit</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;5-ngAfterContentInit--- 当把内容投影进组件之后调用&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">ngAfterContentChecked</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;6-ngAfterContentChecked执行了--- 每次完成被投影组件内容的变更检测之后调用&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">ngAfterViewInit</span>(): <span class="built_in">void</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;7-ngAfterViewInit---- 组件，视图及子视图加载完毕执行，一般在这里操作DOM&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">ngAfterViewChecked</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;8-ngAfterViewChecked---- 每次做完组件视图和子视图的变更检测之后调用&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">ngOnDestroy</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;9-ngOnDestroy执行了····&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//自定义方法</span></span><br><span class="line">    <span class="title function_">changeMsg</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">msg</span> = <span class="string">&quot;数据改变了&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Angular-组件通信">Angular 组件通信</h2>
+<p>组件通信，因为 angular 属于单页面开发，页面中的每个功能都是使用组件进行显示的，但是每个组件之间的数据不同，有时候又难免需要其他组件传来数据来执行本组件的逻辑，这个时候就需要用到组件通信了</p>
+<p>所谓的父子组件，假如当前程序中有三个组件，分别是 Home，Header，Main，负责显示的组件是 Home，在Home 组件中分别引用并显示了 Header，Main，这时 Home 就是 Header，Main 的父组件， Header，Main 也是 Home 的子组件</p>
+<h3 id="父组件获取子组件数据">父组件获取子组件数据</h3>
+<p>在父组件中获取子组件中的属性或者函数，需要用到一个之前就学习过的知识：<code>ViewChild</code> 模块，他可以在父组件中主动的去获取子组件中的属性及函数</p>
+<blockquote>
+<p>获取子组件中的属性及函数</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 父组件在引用子组件的时候，为他添加一个ViewChild标识 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">app-header</span> #<span class="attr">son</span>&gt;</span><span class="tag">&lt;/<span class="name">app-header</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// son代表的就是子组件的实例，然后在父组件中就可以使用子组件中的内容了</span></span><br><span class="line"><span class="comment">// 其中的good，logA都是在子组件中事先定义好的属性及方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="attr">title</span>: <span class="built_in">string</span> = <span class="string">&quot;父组件的参数&quot;</span>;</span><br><span class="line"><span class="meta">@ViewChild</span>(<span class="string">&quot;son&quot;</span>) <span class="attr">son</span>:<span class="built_in">any</span>;</span><br><span class="line"><span class="title function_">getGood</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">son</span>.<span class="property">good</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">getLogA</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">son</span>.<span class="title function_">logA</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="子组件获取父组件中的数据">子组件获取父组件中的数据</h3>
+<p>子组件获取父组件需要在子组件中引用一个 <code>Input</code> 模块，这样就可以接受父组件传来的参数了</p>
+<blockquote>
+<p>获取父组件中的属性及函数</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 在父组件中使用单向绑定将自己传入给子组件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">app-header</span> [<span class="attr">super</span>]=<span class="string">&quot;this&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">app-header</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在子组件中使用Input获取到父组件传入的对象并使用</span></span><br><span class="line"><span class="keyword">public</span> <span class="attr">title</span>:<span class="built_in">string</span>=<span class="string">&quot;undefined&quot;</span>;</span><br><span class="line"><span class="meta">@Input</span>() <span class="attr">super</span>:<span class="built_in">any</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取父组件信息的方法</span></span><br><span class="line"><span class="title function_">getTitle</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">title</span> = <span class="variable language_">this</span>.<span class="property">super</span>.<span class="property">title</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">getLogB</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">super</span>.<span class="title function_">logB</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 子组件的HTML代码 --&gt;</span></span><br><span class="line">我是Header组件: &#123;&#123;title&#125;&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> (<span class="attr">click</span>)=<span class="string">&quot;getTitle()&quot;</span>&gt;</span>获取父组件的title属性<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> (<span class="attr">click</span>)=<span class="string">&quot;getLogB()&quot;</span>&gt;</span>获取父组件的logB函数<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="HTTP-服务">HTTP 服务</h2>
+<p>在 angular 中内置了 HTTP 服务可以发起请求，想要使用它必须要在 <code>app.module.ts</code> 文件中引用并注册</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">HttpClientModule</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/common/http&#x27;</span>;</span><br><span class="line"><span class="attr">imports</span>: [ ... <span class="title class_">HttpClientModule</span> ... ],</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>发起请求示例：</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;<span class="title class_">HttpClient</span>&#125; <span class="keyword">from</span> <span class="string">&quot;@angular/common/http&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_">constructor</span>(<span class="params"><span class="keyword">public</span> http: HttpClient</span>) &#123; &#125;</span><br><span class="line"><span class="title function_">ngOnInit</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">getRequest</span>();</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">postRequest</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 发起Get请求</span></span><br><span class="line"><span class="title function_">getRequest</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> url = <span class="string">&quot;请求的目标地址&quot;</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">http</span>.<span class="title function_">get</span>(url).<span class="title function_">toPromise</span>().<span class="title function_">then</span>( <span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">    &#125;).<span class="title function_">catch</span>( <span class="function"><span class="params">err</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;[Error] 请求失败！ 异常信息如下：&quot;</span>)</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(err)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 发起Post请求</span></span><br><span class="line"><span class="title function_">postRequest</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> url = <span class="string">&quot;请求的目标地址&quot;</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">http</span>.<span class="title function_">post</span>(url).<span class="title function_">toPromise</span>().<span class="title function_">then</span>( <span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">    &#125;).<span class="title function_">catch</span>( <span class="function"><span class="params">err</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;[Error] 请求失败！ 异常信息如下：&quot;</span>)</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(err)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>封装HTTP服务</p>
+</blockquote>
+<p>关于 HTTP 请求这里就不详细记笔记了，封装一个通用服务来简化传值，cookie 等设置：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 封装好的HTTP服务</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">HttpService</span> &#123;</span><br><span class="line"></span><br><span class="line">    public <span class="attr">baseUrl</span>: string = <span class="string">&quot;http://localhost:8080&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">private http: HttpClient</span>) &#123; &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">// path为请求的路径，和baseUrl拼接后形成完成的请求URL</span></span><br><span class="line">    <span class="title function_">get</span>(<span class="params">path: string, data: any = <span class="literal">null</span></span>)&#123;</span><br><span class="line">        <span class="comment">// withCredentials：允许携带Cookie，保持sessionid一致</span></span><br><span class="line">        <span class="comment">// params：请求时需要携带的参数</span></span><br><span class="line">        <span class="keyword">let</span> param = &#123;<span class="attr">withCredentials</span>: <span class="literal">true</span>, <span class="attr">params</span>: data&#125;;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">http</span>.<span class="title function_">get</span>(<span class="variable language_">this</span>.<span class="property">baseUrl</span> + path, param).<span class="title function_">toPromise</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">post</span>(<span class="params">path: string, data: any = <span class="literal">null</span></span>)&#123;</span><br><span class="line">        <span class="comment">// withCredentials：允许携带Cookie，保持sessionid一致</span></span><br><span class="line">        <span class="comment">// params：请求时需要携带的参数</span></span><br><span class="line">        <span class="keyword">let</span> param = &#123;<span class="attr">withCredentials</span>: <span class="literal">true</span>, <span class="attr">params</span>: data&#125;;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">http</span>.<span class="title function_">post</span>(<span class="variable language_">this</span>.<span class="property">baseUrl</span> + path, <span class="literal">null</span>, param).<span class="title function_">toPromise</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用方法：</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">HomePage</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">private http: HttpService</span>) &#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">login</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">http</span>.<span class="title function_">post</span>(<span class="string">&quot;/login&quot;</span>).<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;res&quot;</span>, res);</span><br><span class="line">        &#125;).<span class="title function_">catch</span>(<span class="function"><span class="params">err</span>=&gt;</span>&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;err&quot;</span>, err);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="title function_">logout</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">http</span>.<span class="title function_">get</span>(<span class="string">&quot;/logout&quot;</span>).<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;res&quot;</span>, res);</span><br><span class="line">        &#125;).<span class="title function_">catch</span>(<span class="function"><span class="params">err</span>=&gt;</span>&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;err&quot;</span>, err);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Angular-的路由">Angular 的路由</h2>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF/" class="category-chain-item">前端</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%89%8D%E7%AB%AF/" class="print-no-link">#前端</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Angular脚手架</div>
+      <div>http://example.com/2021/03/13/前端相关/Angular笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Shi_Kang</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>March 13, 2021</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/04/13/Java%E7%AC%94%E8%AE%B0/%E4%BD%A0%E5%A5%BD%E5%95%8A/" title="你好啊">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">你好啊</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/03/13/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/jQuery%E7%AC%94%E8%AE%B0/" title="jQuery学习笔记">
+                        <span class="hidden-mobile">jQuery学习笔记</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'gusheng2000/gusheng2000.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'Comment');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>skr</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

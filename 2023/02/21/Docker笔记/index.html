@@ -1,0 +1,1339 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" href="/img/myfavicon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Shi_Kang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="官方文档地址：https:&#x2F;&#x2F;www.docker.com&#x2F;get-started 中文参考手册：https:&#x2F;&#x2F;docker_practice.gitee.io&#x2F;zh-cn&#x2F; 笔记原作者：陈艳男 B站主页，更多笔记下载  Docker是一款开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的Linux或 Windows机器上。他基于虚拟化技术为每个镜">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker使用详解">
+<meta property="og:url" content="http://example.com/2023/02/21/Docker%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Shi_Kang">
+<meta property="og:description" content="官方文档地址：https:&#x2F;&#x2F;www.docker.com&#x2F;get-started 中文参考手册：https:&#x2F;&#x2F;docker_practice.gitee.io&#x2F;zh-cn&#x2F; 笔记原作者：陈艳男 B站主页，更多笔记下载  Docker是一款开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的Linux或 Windows机器上。他基于虚拟化技术为每个镜">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s2.loli.net/2023/11/26/GyIdrAsehtBv1ug.png">
+<meta property="article:published_time" content="2023-02-21T14:46:25.000Z">
+<meta property="article:modified_time" content="2024-10-12T02:08:00.569Z">
+<meta property="article:author" content="Shi_Kang">
+<meta property="article:tag" content="环境部署">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2023/11/26/GyIdrAsehtBv1ug.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Docker使用详解 - Shi_Kang</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":null,"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 80vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Shi·s Web Space</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Docker使用详解"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-02-21 22:46" pubdate>
+          February 21, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          9.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          76 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Docker使用详解</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>官方文档地址：<a target="_blank" rel="noopener" href="https://www.docker.com/get-started">https://www.docker.com/get-started</a></p>
+<p>中文参考手册：<a target="_blank" rel="noopener" href="https://docker_practice.gitee.io/zh-cn/">https://docker_practice.gitee.io/zh-cn/</a></p>
+<p>笔记原作者：陈艳男 <a target="_blank" rel="noopener" href="https://space.bilibili.com/352224540/">B站主页</a>，<a target="_blank" rel="noopener" href="https://www.baizhiedu.xin/front/index#/main">更多笔记下载</a></p>
+<h2 id=""></h2>
+<p>Docker是一款开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的Linux或 Windows机器上。他基于虚拟化技术为每个镜像创建独立的容器，相互之间不干扰，可以做到秒级启动程序。</p>
+<blockquote>
+<p>最新官网首页：<a target="_blank" rel="noopener" href="https://www.docker.com/">https://www.docker.com/</a></p>
+</blockquote>
+<p><img src="https://s2.loli.net/2023/11/26/GyIdrAsehtBv1ug.png" srcset="/img/loading.gif" lazyload alt=""><br>
+<img src="https://s2.loli.net/2023/11/26/nDFPC2Sv6J87fmU.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 1.官方介绍</span></span><br><span class="line"><span class="bullet">-</span> We have a complete container solution for you - no matter who you are and where you are on your containerization journey.</span><br><span class="line"><span class="bullet">-</span> 翻译: 我们为你提供了一个完整的容器解决方案,不管你是谁,不管你在哪,你都可以开始容器的的旅程。</span><br><span class="line"><span class="bullet">-</span> 官方定义: docker是一个容器技术。</span><br></pre></td></tr></table></figure>
+<h2 id="为什么使用Docker">为什么使用Docker</h2>
+<ul>
+<li>
+<p><strong>优势1:  一致的运行环境,更轻松的迁移</strong></p>
+<p>我们部署一个程序需要很多东西，比如jdk、tomcat、mysql等软件环境。当其中任意一种不符合要求都可能会导致应用程序启动失败！Docker则将程序以及使用软件环境直接打包在一起，保证了运行环境一致。</p>
+<p><strong>优势2：对进程进行封装隔离,容器与容器之间互不影响,更高效的利用系统资源</strong></p>
+<p>如果你的程序重要性不是特别高的话，公司基本上不可能让你的程序独享一台服务器的，这时候你的服务器就会跟公司其他人的程序共享一台服务器，所以不可避免地就会受到其他程序的干扰，导致自己的程序出现问题。Docker就很好解决了环境隔离的问题，别人程序不会影响到自己的程序。</p>
+</li>
+<li>
+<p><strong>优势3: 通过镜像复制N多个环境一致容器</strong></p>
+<p>在没有Docker的情况下，要在几天内部署几十台服务器，这对运维来说是一件非常折磨人的事，而且每台服务器的环境还不一定一样，就会出现各种问题，最后部署地头皮发麻。用Docker的话，我只需要将程序打包到镜像，你要多少台服务，我就给力跑多少容器，极大地提高了部署效率。</p>
+</li>
+</ul>
+<h2 id="Docker和虚拟机区别">Docker和虚拟机区别</h2>
+<blockquote>
+<p>关于Docker与虚拟机的区别，我在网上找到的一张图，非常直观形象地展示出来，话不多说，直接上图。</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2023/11/26/UHXtC2WqwbuN3k4.png" srcset="/img/loading.gif" lazyload alt="image-20201220222456675"></p>
+<p><code>比较上面两张图，我们发现虚拟机是携带操作系统，本身很小的应用程序却因为携带了操作系统而变得非常大，很笨重</code>。Docker是不携带操作系统的，所以Docker的应用就非常的轻巧。另外在调用宿主机的CPU、磁盘等等这些资源的时候，拿内存举例，虚拟机是利用Hypervisor去虚拟化内存，整个调用过程是虚拟内存-&gt;虚拟物理内存-&gt;真正物理内存，但是Docker是利用Docker Engine去调用宿主的的资源，这时候过程是虚拟内存-&gt;真正物理内存。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>传统虚拟机</th>
+<th>Docker容器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>磁盘占用</td>
+<td>几GB~几十个GB左右</td>
+<td>几十MB~几百MB左右</td>
+</tr>
+<tr>
+<td>CPU内存占用</td>
+<td>虚拟操作系统非常占用CPU和内存</td>
+<td>Docker引擎占用极低</td>
+</tr>
+<tr>
+<td>启动速度</td>
+<td>（从开机到运行项目）几分钟</td>
+<td>（从开启容器到运行项目）几秒</td>
+</tr>
+<tr>
+<td>安装管理</td>
+<td>需要专门的运维技术</td>
+<td>安装、管理方便</td>
+</tr>
+<tr>
+<td>应用部署</td>
+<td>每次部署都费时费力</td>
+<td>从第二次部署开始轻松简捷</td>
+</tr>
+<tr>
+<td>耦合性</td>
+<td>多个应用服务安装到一起，容易互相影响</td>
+<td>每个应用服务一个容器，达成隔离</td>
+</tr>
+<tr>
+<td>系统依赖</td>
+<td>无</td>
+<td>需求相同或相似的内核，目前推荐是Linux</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Docker的安装配置-CentOS7">Docker的安装配置(CentOS7)</h2>
+<blockquote>
+<p>安装流程：根据官方文档走一遍</p>
+</blockquote>
+<p><strong>1. 安装之前要保证系统中没有相关残留导致安装失败，这里先删除、清理依赖</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yum remove docker \</span><br><span class="line">    docker-client \</span><br><span class="line">    docker-client-latest \</span><br><span class="line">    docker-common \</span><br><span class="line">    docker-latest \</span><br><span class="line">    docker-latest-logrotate \</span><br><span class="line">    docker-logrotate \</span><br><span class="line">    docker-engine</span><br></pre></td></tr></table></figure>
+<p><strong>2. 清理依赖结束后，就需要安装 docker 所需的依赖了</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils</span><br></pre></td></tr></table></figure>
+<p><strong>3. 依赖安装完成后需要下载 docker 程序，官方默认提供的是国外的下载地址，这里换用阿里云的比较快</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+<p><strong>4. 下载地址更换完成后就可以进行下载了，稍等片刻后 docker 就会安装成功</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
+<p><strong>5. 接下来就可以启动Docker服务了</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动docker服务</span></span><br><span class="line">systemctl start docker</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">相对应的结束docker服务</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">systemctl stop docker</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>配置阿里云镜像加速</p>
+</blockquote>
+<p>在上面安装Docker的时候使用了阿里云地址下载，有经验的肯定能感觉到相对于官网速度提高了不止一点，后面希望所有镜像都通过阿里云进行下载，这里配置阿里云镜像加速：</p>
+<ol>
+<li>登陆/注册 阿里云官方网站</li>
+<li>点进控制台</li>
+<li>打开左侧侧边栏找到<code>容器镜像服务</code>并点击</li>
+<li>找到左侧最下面的<code>镜像加速器</code></li>
+<li>选择符合环境的代码执行即可：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">每个人的地址都不一样，我这里的镜像加速地址为：</span></span><br><span class="line">sudo mkdir -p /etc/docker</span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-&#x27;EOF&#x27;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;registry-mirrors&quot;: [&quot;https://lz2nib3q.mirror.aliyuncs.com&quot;]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+<p>可以通过<code>docker info</code>命令来查看镜像加速是否配置成功：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# docker info</span><br><span class="line"><span class="meta prompt_">   # </span><span class="language-bash">省略一大堆，直接看最下面..........</span></span><br><span class="line">   Registry Mirrors:</span><br><span class="line">    &#x27;https://lz2nib3q.mirror.aliyuncs.com/&#x27;</span><br><span class="line">   Live Restore Enabled: false</span><br><span class="line">   Product License: Community Engine</span><br></pre></td></tr></table></figure>
+<h2 id="Docker的核心架构">Docker的核心架构</h2>
+<blockquote>
+<p>基本概念了解</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2023/11/26/so7t6n1mhCFvJQy.png" srcset="/img/loading.gif" lazyload alt="docker-03"></p>
+<ul>
+<li><code>镜像:</code>一个镜像代表一个应用环境,他是一个只读的文件,如 mysql镜像,tomcat镜像,nginx镜像等</li>
+<li><code>容器:</code>镜像每次运行之后就是产生一个容器,就是正在运行的镜像,特点就是可读可写</li>
+<li><code>仓库:</code>用来存放镜像的位置,类似于maven仓库,也是镜像下载和上传的位置</li>
+<li><code>dockerFile:</code>docker生成镜像配置文件,用来书写自定义镜像的一些配置</li>
+<li><code>tar:</code>一个对镜像打包的文件,日后可以还原成镜像</li>
+</ul>
+<blockquote>
+<p>Docker运行流程示意图</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2023/11/26/aHxivRoycmQAIJe.png" srcset="/img/loading.gif" lazyload alt="docker-05"></p>
+<h2 id="Docker初体验">Docker初体验</h2>
+<blockquote>
+<p>运行 hello-world 镜像</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# docker run hello-world</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在本地找不到hello-world这个镜像(:latest代表最新版本镜像)</span></span><br><span class="line">Unable to find image &#x27;hello-world:latest&#x27; locally</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在找不到镜像的情况下默认会去到远程仓库中自动下载</span></span><br><span class="line">latest: Pulling from library/hello-world</span><br><span class="line">0e03bdcc26d7: Already exists </span><br><span class="line">Digest: sha256:31b9c7d48790f0d8c50ab433d9c3b7e17666d6993084c002c2ff1ca09b96391d</span><br><span class="line">Status: Downloaded newer image for hello-world:latest</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">镜像下载完成后执行运行命令，运行的结果是：</span></span><br><span class="line">Hello from Docker!</span><br><span class="line">This message shows that your installation appears to be working correctly.</span><br><span class="line"></span><br><span class="line">To generate this message, Docker took the following steps:</span><br><span class="line"> 1. The Docker client contacted the Docker daemon.</span><br><span class="line"> 2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.</span><br><span class="line">    (amd64)</span><br><span class="line"> 3. The Docker daemon created a new container from that image which runs the</span><br><span class="line">    executable that produces the output you are currently reading.</span><br><span class="line"> 4. The Docker daemon streamed that output to the Docker client, which sent it</span><br><span class="line">    to your terminal.</span><br><span class="line"></span><br><span class="line">To try something more ambitious, you can run an Ubuntu container with:</span><br><span class="line"><span class="meta prompt_"> $ </span><span class="language-bash">docker run -it ubuntu bash</span></span><br><span class="line"></span><br><span class="line">Share images, automate workflows, and more with a free Docker ID:</span><br><span class="line"> https://hub.docker.com/</span><br><span class="line"></span><br><span class="line">For more examples and ideas, visit:</span><br><span class="line"> https://docs.docker.com/get-started/</span><br></pre></td></tr></table></figure>
+<h2 id="Docker常用命令">Docker常用命令</h2>
+<blockquote>
+<p>帮助、辅助命令</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 1.安装完成辅助命令</span></span><br><span class="line">docker version -------------------------- 查看docker的信息</span><br><span class="line">docker info  -------------------------- 查看更详细的信息</span><br><span class="line">docker --help -------------------------- 帮助命令</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Images 镜像命令</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 1.查看本机中所有镜像</span></span><br><span class="line">docker images --------------------------  列出本地所有镜像</span><br><span class="line"> -a    列出所有镜像（包含中间映像层）</span><br><span class="line">   -q    只显示镜像id</span><br><span class="line"></span><br><span class="line"><span class="section"># 2.搜索镜像</span></span><br><span class="line">docker search [options] 镜像名 ------------  去dockerhub上查询当前镜像</span><br><span class="line"> -s 指定值     列出收藏数不少于指定值的镜像</span><br><span class="line">   --no-trunc   显示完整的镜像信息</span><br><span class="line"></span><br><span class="line"><span class="section"># 3.从仓库下载镜像</span></span><br><span class="line">docker pull 镜像名[:TAG|@DIGEST] --------  下载镜像</span><br><span class="line"></span><br><span class="line"><span class="section"># 4.删除镜像</span></span><br><span class="line">docker rmi 镜像名 ------------------------  删除镜像</span><br><span class="line"> -f           强制删除</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Contrainer 容器命令</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 1.运行容器</span></span><br><span class="line">docker run 镜像名 -------------------------- 镜像名新建并启动容器</span><br><span class="line"> --name      为容器指定一个名称</span><br><span class="line"> -d          后台运行容器，并返回容器ID</span><br><span class="line"> -p          小写-设置端口映射【主机端口:容器端口】</span><br><span class="line"> -P          大写字母P：随机指定端口</span><br><span class="line"> -i          以交互模式运行，通常与 -t 同时使用</span><br><span class="line"> -t          为容器重新分配一个伪输入终端，通常与 -i 同时使用</span><br><span class="line"> -e          通常用于对容器内的环境进行一些设置</span><br><span class="line"> -v          绑定一个卷</span><br><span class="line"></span><br><span class="line"><span class="section"># 2.查看运行的容器</span></span><br><span class="line">docker ps         -------------------------- 列出所有正在运行的容器</span><br><span class="line"> -a          正在运行的和历史运行过的容器</span><br><span class="line"> -q          静默模式，只显示容器编号</span><br><span class="line"></span><br><span class="line"><span class="section"># 3.停止|关闭|重启容器</span></span><br><span class="line">docker start   容器名字或者容器id  --------------- 开启容器</span><br><span class="line">docker restart 容器名或者容器id    --------------- 重启容器</span><br><span class="line">docker stop    容器名或者容器id  --------------- 正常停止容器运行</span><br><span class="line">docker kill    容器名或者容器id    --------------- 立即停止容器运行</span><br><span class="line"></span><br><span class="line"><span class="section"># 4.删除容器</span></span><br><span class="line">docker rm -f 容器id和容器名     </span><br><span class="line">docker rm -f $(docker ps -aq)   --------------- 删除所有容器</span><br><span class="line"></span><br><span class="line"><span class="section"># 5.查看容器内进程</span></span><br><span class="line">docker top 容器id或者容器名        --------------- 查看容器内的进程</span><br><span class="line"></span><br><span class="line"><span class="section"># 6.查看查看容器内部细节</span></span><br><span class="line">docker inspect 容器id      --------------- 查看容器内部细节</span><br><span class="line"></span><br><span class="line"><span class="section"># 7.查看容器的运行日志</span></span><br><span class="line">docker logs [OPTIONS] 容器id或容器名 ------------ 查看容器日志</span><br><span class="line"><span class="code">    -t  加入时间戳</span></span><br><span class="line"><span class="code">    -f  跟随最新的日志打印</span></span><br><span class="line"><span class="code">    --tail  数字 显示最后多少条</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="section"># 8.进入容器内部</span></span><br><span class="line">docker exec [options] 容器id 容器内命令 ------------------ 进入容器执行命令</span><br><span class="line"><span class="code">    -i  以交互模式运行容器，通常与-t一起使用</span></span><br><span class="line"><span class="code">    -t  分配一个伪终端    shell窗口   bash </span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="section"># 9.容器和宿主机之间复制文件</span></span><br><span class="line">docker cp 文件|目录 容器id:容器路径           -----------------   将宿主机复制到容器内部</span><br><span class="line">docker cp 容器id:容器内资源路径 宿主机目录路径  -----------------   将容器内资源拷贝到主机上</span><br><span class="line"></span><br><span class="line"><span class="section"># 10.数据卷(volum)实现与宿主机共享目录</span></span><br><span class="line">docker run -v 宿主机的路径|任意别名:/容器内的路径 镜像名</span><br><span class="line">  注意: </span><br><span class="line"><span class="code">     1.如果是宿主机路径必须是绝对路径,宿主机目录会覆盖容器内目录内容</span></span><br><span class="line"><span class="code">     2.如果是别名则会在docker运行容器时自动在宿主机中创建一个目录,并将容器目录文件复制到宿主机中</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="section"># 11.打包镜像</span></span><br><span class="line">docker save 镜像名 -o 名称.tar</span><br><span class="line"></span><br><span class="line"><span class="section"># 12.载入镜像</span></span><br><span class="line">docker load -i 名称.tar</span><br><span class="line"></span><br><span class="line"><span class="section"># 13.容器打包成新的镜像</span></span><br><span class="line">docker commit -m &quot;描述信息&quot; -a &quot;作者信息&quot;   （容器id或者名称）打包的镜像名称:标签</span><br></pre></td></tr></table></figure>
+<h2 id="Docker的镜像原理">Docker的镜像原理</h2>
+<p>镜像是一种轻量级的，可执行的独立软件包，用来打包软件运行环境和基于运行环境开发的软件，它包含运行某个软件所需的所有内容，包括代码、运行时所需的库、环境变量和配置文件。</p>
+<blockquote>
+<p>为什么一个镜像会那么大？</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2023/11/26/Ozftpb9Mm8hvNUE.png" srcset="/img/loading.gif" lazyload alt="docker-06"><strong>UnionFS ( 联合文件系统 )</strong>：</p>
+<p>Union文件系统是一种分层，轻量级并且高性能的文件系统，它支持对文件系统的修改作为一次提交来一层层的叠加，同时可以将不同目录挂载到同一个虚拟文件系统下。Union文件系统是Docker镜像的基础。这种文件系统特性:就是一次同时加载多个文件系统，但从外面看起来，只能看到一个文件系统，联合加载会把各层文件系统叠加起来，这样最终的文件系统会包含所有底层的文件和目录 。</p>
+<blockquote>
+<p>docker的镜像实际是由一层一层的文件系统组成。</p>
+</blockquote>
+<ul>
+<li>
+<p>bootfs（boot file system）主要包含bootloader和kernel，bootloader主要是引导加载kernel，Linux刚启动时会加载bootfs文件系统。在docker镜像的最底层就是bootfs。这一层与Linux/Unix 系统是一样的，包含boot加载器（bootloader）和内核（kernel）。当boot加载完,后整个内核就都在内存中了，此时内存的使用权已由bootfs转交给内核，此时会卸载bootfs。</p>
+</li>
+<li>
+<p>rootfs（root file system），在bootfs之上，包含的就是典型的linux系统中的/dev，/proc，/bin，/etc等标准的目录和文件。rootfs就是各种不同的操作系统发行版，比如Ubuntu/CentOS等等。</p>
+</li>
+<li>
+<p>我们平时安装进虚拟机的centos都有1到几个GB，为什么docker这里才200MB？对于一个精简的OS，rootfs可以很小，只需要包括最基本的命令，工具，和程序库就可以了，因为底层直接使用Host的Kernal，自己只需要提供rootfs就行了。由此可见不同的linux发行版，他们的bootfs是一致的，rootfs会有差别。因此不同的发行版可以共用bootfs。</p>
+</li>
+</ul>
+<p><img src="D:%5C%E7%AC%94%E8%AE%B0%5CMarkdown-master%5CMarkdown-master%5Cimg%5Cdocker-01.jpg" srcset="/img/loading.gif" lazyload alt="docker-01"></p>
+<h2 id="Docker常用服务安装">Docker常用服务安装</h2>
+<h3 id="简单程序安装">简单程序安装</h3>
+<blockquote>
+<p>安装mysql</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 1.拉取mysql镜像到本地</span></span><br><span class="line"> docker pull mysql:tag (tag不加默认最新版本)</span><br><span class="line"> </span><br><span class="line"><span class="section"># 2.运行mysql服务</span></span><br><span class="line"> docker run --name mysql -e MYSQL<span class="emphasis">_ROOT_</span>PASSWORD=root -p 3306:3306 -d  mysql:tag  --没有暴露外部端口</span><br><span class="line"></span><br><span class="line"><span class="section"># 3.进入mysql容器</span></span><br><span class="line"> docker exec -it 容器名称|容器id bash</span><br><span class="line"></span><br><span class="line"><span class="section"># 4.外部查看mysql日志</span></span><br><span class="line"> docker logs 容器名称|容器id</span><br><span class="line"></span><br><span class="line"><span class="section"># 5.使用自定义配置参数</span></span><br><span class="line"> docker run --name mysql -v /root/mysql/conf.d:/etc/mysql/conf.d -e MYSQL<span class="emphasis">_ROOT_</span>PASSWORD=root -d mysql:tag</span><br><span class="line"></span><br><span class="line"><span class="section"># 6.将容器数据位置与宿主机位置挂载保证数据安全</span></span><br><span class="line">docker run -d \</span><br><span class="line">--name mysql \</span><br><span class="line">-v /root/mysql/data:/var/lib/mysql \</span><br><span class="line">-v /root/mysql/conf:/etc/mysql \</span><br><span class="line">-e MYSQL<span class="emphasis">_ROOT_</span>PASSWORD=zhang \</span><br><span class="line">-p 3306:3306 \</span><br><span class="line">mysql:5.7.32</span><br><span class="line"></span><br><span class="line"><span class="section"># 7.通过其他客户端访问 如在window系统|macos系统使用客户端工具访问</span></span><br><span class="line"> </span><br><span class="line"><span class="section"># 8.将mysql数据库备份为sql文件</span></span><br><span class="line"> docker exec mysql|容器id sh -c &#x27;exec mysqldump --all-databases -uroot -p&quot;$MYSQL<span class="emphasis">_ROOT_</span>PASSWORD&quot;&#x27; &gt; /root/all-databases.sql  --导出全部数据</span><br><span class="line"> docker exec mysql sh -c &#x27;exec mysqldump --databases 库表 -uroot -p&quot;$MYSQL<span class="emphasis">_ROOT_</span>PASSWORD&quot;&#x27; &gt; /root/all-databases.sql  --导出指定库数据</span><br><span class="line"> docker exec mysql sh -c &#x27;exec mysqldump --no-data --databases 库表 -uroot -p&quot;$MYSQL<span class="emphasis">_ROOT_</span>PASSWORD&quot;&#x27; &gt; /root/all-databases.sql  --导出指定库数据不要数据</span><br><span class="line"></span><br><span class="line"><span class="section"># 9.执行sql文件到mysql中</span></span><br><span class="line"> docker exec -i mysql sh -c &#x27;exec mysql -uroot -p&quot;$MYSQL<span class="emphasis">_ROOT_</span>PASSWORD&quot;&#x27; &lt; /root/xxx.sql</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>安装Redis服务</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 1.在docker hub搜索redis镜像</span></span><br><span class="line"> docker search redis</span><br><span class="line"></span><br><span class="line"><span class="section"># 2.拉取redis镜像到本地</span></span><br><span class="line"> docker pull redis</span><br><span class="line"></span><br><span class="line"><span class="section"># 3.启动redis服务运行容器</span></span><br><span class="line"> docker run --name redis -d redis:tag (没有暴露外部端口)</span><br><span class="line"> docker run --name redis -p 6379:6379 -d redis:tag (暴露外部宿主机端口为6379进行连接) </span><br><span class="line"></span><br><span class="line"><span class="section"># 4.查看启动日志</span></span><br><span class="line"> docker logs -t -f 容器id|容器名称</span><br><span class="line"></span><br><span class="line"><span class="section"># 5.进入容器内部查看</span></span><br><span class="line"> docker exec -it 容器id|名称 bash  </span><br><span class="line"></span><br><span class="line"><span class="section"># 6.加载外部自定义配置启动redis容器</span></span><br><span class="line"> 默认情况下redis官方镜像中没有redis.conf配置文件 需要去官网下载指定版本的配置文件</span><br><span class="line"><span class="bullet"> 1.</span> wget http://download.redis.io/releases/redis-5.0.8.tar.gz  下载官方安装包</span><br><span class="line"><span class="bullet"> 2.</span> 将官方安装包中配置文件进行复制到宿主机指定目录中如 /root/redis/redis.conf文件</span><br><span class="line"><span class="bullet"> 3.</span> 修改需要自定义的配置</span><br><span class="line">   bind 0.0.0.0 开启远程权限</span><br><span class="line">   appenonly yes 开启aof持久化</span><br><span class="line"><span class="bullet"> 4.</span> 加载配置启动</span><br><span class="line"> docker run --name redis -v /root/redis:/opt/conf -p 6379:6379 -d redis redis-server /usr/local/etc/redis/redis.conf  </span><br><span class="line"></span><br><span class="line"><span class="section"># 7.将数据目录挂在到本地保证数据安全</span></span><br><span class="line">docker run -d \</span><br><span class="line">--name redis \</span><br><span class="line">-v /root/redis/data:/data \</span><br><span class="line">-v /root/redis/conf:/opt/conf \</span><br><span class="line">-p 6379:6379 \</span><br><span class="line">redis:5.0.10 redis-server /opt/conf/redis.conf</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>安装Nginx</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 1.在docker hub搜索nginx</span></span><br><span class="line"> docker search nginx</span><br><span class="line"></span><br><span class="line"><span class="section"># 2.拉取nginx镜像到本地</span></span><br><span class="line"> [root@localhost ~]# docker pull nginx</span><br><span class="line"><span class="code">    Using default tag: latest</span></span><br><span class="line"><span class="code">    latest: Pulling from library/nginx</span></span><br><span class="line"><span class="code">    afb6ec6fdc1c: Pull complete </span></span><br><span class="line"><span class="code">    b90c53a0b692: Pull complete </span></span><br><span class="line"><span class="code">    11fa52a0fdc0: Pull complete </span></span><br><span class="line"><span class="code">    Digest: sha256:30dfa439718a17baafefadf16c5e7c9d0a1cde97b4fd84f63b69e13513be7097</span></span><br><span class="line"><span class="code">    Status: Downloaded newer image for nginx:latest</span></span><br><span class="line"><span class="code">    docker.io/library/nginx:latest</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="section"># 3.启动nginx容器</span></span><br><span class="line">  docker run -p 80:80 --name nginx01 -d nginx</span><br><span class="line"></span><br><span class="line"><span class="section"># 4.进入容器</span></span><br><span class="line">  docker exec -it nginx01 /bin/bash</span><br><span class="line">  查找目录:  whereis nginx</span><br><span class="line">  配置文件:  /etc/nginx/nginx.conf</span><br><span class="line"></span><br><span class="line"><span class="section"># 5.复制配置文件到宿主机</span></span><br><span class="line">  docker cp nginx01(容器id|容器名称):/etc/nginx/nginx.conf 宿主机名录</span><br><span class="line"></span><br><span class="line"><span class="section"># 6.挂在nginx配置以及html到宿主机外部</span></span><br><span class="line">  docker run --name nginx02 -v /root/nginx/nginx.conf:/etc/nginx/nginx.conf -v /root/nginx/html:/usr/share/nginx/html -p 80:80 -d nginx  </span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>安装Tomcat</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 1.在docker hub搜索tomcat</span></span><br><span class="line"> docker search tomcat</span><br><span class="line"></span><br><span class="line"><span class="section"># 2.下载tomcat镜像</span></span><br><span class="line"> docker pull tomcat</span><br><span class="line"></span><br><span class="line"><span class="section"># 3.运行tomcat镜像</span></span><br><span class="line"> docker run -p 8080:8080 -d --name mytomcat tomcat</span><br><span class="line"></span><br><span class="line"><span class="section"># 4.进入tomcat容器</span></span><br><span class="line"> docker exec -it mytomcat /bin/bash</span><br><span class="line"></span><br><span class="line"><span class="section"># 5.将webapps目录挂载在外部</span></span><br><span class="line"> docker run -p 8080:8080 -v /root/webapps:/usr/local/tomcat/webapps -d --name mytomcat tomcat</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>安装MongoDB数据库</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 1.运行mongDB</span></span><br><span class="line"> docker run -d -p 27017:27017 --name mymongo mongo  ---无须权限</span><br><span class="line"> docker logs -f mymongo --查看mongo运行日志</span><br><span class="line"></span><br><span class="line"><span class="section"># 2.进入mongodb容器</span></span><br><span class="line"> docker exec -it mymongo /bin/bash</span><br><span class="line">  直接执行mongo命令进行操作</span><br><span class="line"></span><br><span class="line"><span class="section"># 3.常见具有权限的容器</span></span><br><span class="line"> docker run --name  mymongo  -p 27017:27017  -d mongo --auth</span><br><span class="line"></span><br><span class="line"><span class="section"># 4.进入容器配置用户名密码</span></span><br><span class="line"> mongo</span><br><span class="line"> use admin 选择admin库</span><br><span class="line"> db.createUser(&#123;user:&quot;root&quot;,pwd:&quot;root&quot;,roles:[&#123;role:&#x27;root&#x27;,db:&#x27;admin&#x27;&#125;]&#125;)   //创建用户,此用户创建成功,则后续操作都需要用户认证</span><br><span class="line"> exit</span><br><span class="line"></span><br><span class="line"><span class="section"># 5.将mongoDB中数据目录映射到宿主机中</span></span><br><span class="line"> docker run -d -p 27017:27017 -v /root/mongo/data:/data/db --name mymongo mongo </span><br></pre></td></tr></table></figure>
+<h3 id="安装ElasticSearch">安装ElasticSearch</h3>
+<p><em>注意：调高JVM线程数限制数量</em></p>
+<h4 id="拉取镜像运行elasticsearch">拉取镜像运行elasticsearch</h4>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 1.dockerhub 拉取镜像</span></span><br><span class="line"> docker pull elasticsearch:6.4.2</span><br><span class="line"><span class="section"># 2.查看docker镜像</span></span><br><span class="line"> docker images</span><br><span class="line"><span class="section"># 3.运行docker镜像</span></span><br><span class="line"> docker run -p 9200:9200 -p 9300:9300 elasticsearch:6.4.2</span><br></pre></td></tr></table></figure>
+<ul>
+<li>启动出现如下错误</li>
+<li><img src="/img/docker-10.png" srcset="/img/loading.gif" lazyload alt="image-20200602184321790"></li>
+</ul>
+<h4 id="预先配置">预先配置</h4>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 1.在centos虚拟机中，修改配置sysctl.conf</span></span><br><span class="line"> vim /etc/sysctl.conf</span><br><span class="line"><span class="section"># 2.加入如下配置</span></span><br><span class="line"> vm.max<span class="emphasis">_map_</span>count=262144 </span><br><span class="line"><span class="section"># 3.启用配置</span></span><br><span class="line"> sysctl -p</span><br><span class="line"> 注：这一步是为了防止启动容器时，报出如下错误：</span><br><span class="line"> bootstrap checks failed max virtual memory areas vm.max<span class="emphasis">_map_</span>count [65530] likely too low, increase to at least [262144]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="启动EleasticSearch容器">启动EleasticSearch容器</h4>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 0.复制容器中data目录到宿主机中</span></span><br><span class="line"> docker cp 容器id:/usr/share/share/elasticsearch/data /root/es</span><br><span class="line"><span class="section"># 1.运行ES容器 指定jvm内存大小并指定ik分词器位置</span></span><br><span class="line"> docker run -d --name es -p 9200:9200 -p 9300:9300 -e ES<span class="emphasis">_JAVA_</span>OPTS=&quot;-Xms128m -Xmx128m&quot; -v /root/es/plugins:/usr/share/elasticsearch/plugins -v /root/es/data:/usr/share/elasticsearch/data elasticsearch:6.4.2</span><br></pre></td></tr></table></figure>
+<h4 id="安装IK分词器">安装IK分词器</h4>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 1.下载对应版本的IK分词器</span></span><br><span class="line"> wget https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.4.2/elasticsearch-analysis-ik-6.4.2.zip</span><br><span class="line"></span><br><span class="line"><span class="section"># 2.解压到plugins文件夹中</span></span><br><span class="line"> yum install -y unzip</span><br><span class="line"> unzip -d ik elasticsearch-analysis-ik-6.4.2.zip</span><br><span class="line"></span><br><span class="line"><span class="section"># 3.添加自定义扩展词和停用词</span></span><br><span class="line"> cd plugins/elasticsearch/config</span><br><span class="line"> vim IKAnalyzer.cfg.xml</span><br><span class="line"> <span class="language-xml"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">comment</span>&gt;</span></span>IK Analyzer 扩展配置<span class="language-xml"><span class="tag">&lt;/<span class="name">comment</span>&gt;</span></span></span><br><span class="line">  &lt;!--用户可以在这里配置自己的扩展字典 --&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">&quot;ext_dict&quot;</span>&gt;</span></span>ext<span class="emphasis">_dict.dic<span class="language-xml"><span class="tag">&lt;/<span class="name">entry</span>&gt;</span></span></span></span><br><span class="line"><span class="emphasis">  &lt;!--用户可以在这里配置自己的扩展停止词字典--&gt;</span></span><br><span class="line"><span class="emphasis">  <span class="language-xml"><span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">&quot;ext_stopwords&quot;</span>&gt;</span></span>ext_</span>stopwords.dic<span class="language-xml"><span class="tag">&lt;/<span class="name">entry</span>&gt;</span></span></span><br><span class="line"> <span class="language-xml"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="section"># 4.在ik分词器目录下config目录中创建ext<span class="emphasis">_dict.dic文件   编码一定要为UTF-8才能生效</span></span></span><br><span class="line"><span class="emphasis"><span class="section"> vim ext_</span>dict.dic 加入扩展词即可</span></span><br><span class="line"><span class="section"># 5. 在ik分词器目录下config目录中创建ext<span class="emphasis">_stopword.dic文件 </span></span></span><br><span class="line"><span class="emphasis"><span class="section"> vim ext_</span>stopwords.dic 加入停用词即可</span></span><br><span class="line"></span><br><span class="line"><span class="section"># 6.重启容器生效</span></span><br><span class="line"> docker restart 容器id</span><br><span class="line"><span class="section"># 7.将此容器提交成为一个新的镜像</span></span><br><span class="line"> docker commit -a=&quot;xiaochen&quot; -m=&quot;es with IKAnalyzer&quot; 容器id xiaochen/elasticsearch:6.4.2</span><br></pre></td></tr></table></figure>
+<h4 id="安装Kibana">安装Kibana</h4>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 1.下载kibana镜像到本地</span></span><br><span class="line"> docker pull kibana:6.4.2</span><br><span class="line"></span><br><span class="line"><span class="section"># 2.启动kibana容器</span></span><br><span class="line"> docker run -d --name kibana -e ELASTICSEARCH<span class="emphasis">_URL=http://10.15.0.3:9200 -p 5601:5601 kibana:6.4.2</span></span><br></pre></td></tr></table></figure>
+<h2 id="Dockerfile">Dockerfile</h2>
+<h3 id="什么是Dockerfile">什么是Dockerfile</h3>
+<p>Dockerfile可以认为是<strong>Docker镜像的描述文件，是由一系列命令和参数构成的脚本</strong>。主要作用是<strong>用来构建docker镜像的构建文件</strong>。</p>
+<p><img src="https://s2.loli.net/2023/11/26/so7t6n1mhCFvJQy.png" srcset="/img/loading.gif" lazyload alt="docker-03"><strong>通过架构图可以看出通过DockerFile可以直接构建镜像</strong></p>
+<h3 id="Dockerfile解析过程">Dockerfile解析过程</h3>
+<h3 id="docker-13Dockerfile的保留命令"><img src="https://s2.loli.net/2023/11/26/pT5fWHrLRQmxIe8.png" srcset="/img/loading.gif" lazyload alt="docker-13">Dockerfile的保留命令</h3>
+<p>官方说明:<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/builder/">https://docs.docker.com/engine/reference/builder/</a></p>
+<table>
+<thead>
+<tr>
+<th>保留字</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FROM</td>
+<td>当前镜像是基于哪个镜像的<code>第一个指令必须是FROM</code></td>
+</tr>
+<tr>
+<td>MAINTAINER</td>
+<td>镜像维护者的姓名和邮箱地址</td>
+</tr>
+<tr>
+<td>RUN</td>
+<td>构建镜像时需要运行的指令</td>
+</tr>
+<tr>
+<td>EXPOSE</td>
+<td>当前容器对外暴露出的端口号</td>
+</tr>
+<tr>
+<td>WORKDIR</td>
+<td>指定在创建容器后，终端默认登录进来的工作目录，一个落脚点</td>
+</tr>
+<tr>
+<td>ENV</td>
+<td>用来在构建镜像过程中设置环境变量</td>
+</tr>
+<tr>
+<td>ADD</td>
+<td>将宿主机目录下的文件拷贝进镜像且ADD命令会自动处理URL和解压tar包</td>
+</tr>
+<tr>
+<td>COPY</td>
+<td>类似于ADD，拷贝文件和目录到镜像中<br/>将从构建上下文目录中&lt;原路径&gt;的文件/目录复制到新的一层的镜像内的&lt;目标路径&gt;位置</td>
+</tr>
+<tr>
+<td>VOLUME</td>
+<td>容器数据卷，用于数据保存和持久化工作</td>
+</tr>
+<tr>
+<td>CMD</td>
+<td>指定一个容器启动时要运行的命令<br/>Dockerfile中可以有多个CMD指令，但只有最后一个生效，CMD会被docker run之后的参数替换</td>
+</tr>
+<tr>
+<td>ENTRYPOINT</td>
+<td>指定一个容器启动时要运行的命令<br/>ENTRYPOINT的目的和CMD一样，都是在指定容器启动程序及其参数</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>FROM 命令</p>
+</blockquote>
+<p>基于那个镜像进行构建新的镜像,在构建时会自动从docker hub拉取base镜像 必须作为Dockerfile的第一个指令出现</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span>  &lt;image&gt;</span><br><span class="line"><span class="keyword">FROM</span>  &lt;image&gt;[:&lt;tag&gt;]     使用版本不写为latest</span><br><span class="line"><span class="keyword">FROM</span>  &lt;image&gt;[@&lt;digest&gt;]  使用摘要</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>MAINTAINER  命令</p>
+</blockquote>
+<p>镜像维护者的姓名和邮箱地址[废弃]</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">MAINTAINER</span> &lt;name&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>RUN 命令</p>
+</blockquote>
+<p>RUN指令将在当前映像之上的新层中执行任何命令并提交结果。生成的提交映像将用于Dockerfile中的下一步</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">RUN</span><span class="language-bash"> &lt;<span class="built_in">command</span>&gt; (shell form, the <span class="built_in">command</span> is run <span class="keyword">in</span> a shell, <span class="built_in">which</span> by default is /bin/sh -c on Linux or cmd /S /C on Windows)</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">echo</span> hello</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> [<span class="string">&quot;executable&quot;</span>, <span class="string">&quot;param1&quot;</span>, <span class="string">&quot;param2&quot;</span>] (<span class="built_in">exec</span> form)</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> [<span class="string">&quot;/bin/bash&quot;</span>, <span class="string">&quot;-c&quot;</span>, <span class="string">&quot;echo hello&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>EXPOSE 命令</p>
+</blockquote>
+<p>用来指定构建的镜像在运行为容器时对外暴露的端口</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">EXPOSE</span> <span class="number">80</span>/tcp  如果没有显示指定则默认暴露都是tcp</span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">80</span>/udp</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>CMD 命令</p>
+</blockquote>
+<p>用来为启动的容器指定执行的命令,在Dockerfile中只能有一条CMD指令。如果列出多个命令，则只有最后一个命令才会生效。</p>
+<p>注意: <strong>Dockerfile中只能有一条CMD指令。如果列出多个命令，则只有最后一个命令才会生效。</strong></p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;executable&quot;</span>,<span class="string">&quot;param1&quot;</span>,<span class="string">&quot;param2&quot;</span>] (<span class="built_in">exec</span> form, this is the preferred form)</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;param1&quot;</span>,<span class="string">&quot;param2&quot;</span>] (as default parameters to ENTRYPOINT)</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> <span class="built_in">command</span> param1 param2 (shell form)</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>WORKDIR 命令</p>
+</blockquote>
+<p>用来为Dockerfile中的任何RUN、CMD、ENTRYPOINT、COPY和ADD指令设置工作目录。如果WORKDIR不存在，即使它没有在任何后续Dockerfile指令中使用，它也将被创建。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /path/to/workdir</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /a</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> b</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> c</span></span><br><span class="line">`注意:<span class="keyword">WORKDIR</span><span class="language-bash">指令可以在Dockerfile中多次使用。如果提供了相对路径，则该路径将与先前WORKDIR指令的路径相对`</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>ENV 命令</p>
+</blockquote>
+<p>用来为构建镜像设置环境变量。这个值将出现在构建阶段中所有后续指令的环境中。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ENV</span> &lt;key&gt; &lt;value&gt;</span><br><span class="line"><span class="keyword">ENV</span> &lt;key&gt;=&lt;value&gt; ...</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>ADD 命令</p>
+</blockquote>
+<p>用来从context上下文复制新文件、目录或远程文件url，并将它们添加到位于指定路径的映像文件系统中。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ADD</span><span class="language-bash"> hom* /mydir/       通配符添加多个文件</span></span><br><span class="line"><span class="keyword">ADD</span><span class="language-bash"> hom?.txt /mydir/   通配符添加</span></span><br><span class="line"><span class="keyword">ADD</span><span class="language-bash"> test.txt relativeDir/  可以指定相对路径</span></span><br><span class="line"><span class="keyword">ADD</span><span class="language-bash"> test.txt /absoluteDir/ 也可以指定绝对路径</span></span><br><span class="line"><span class="keyword">ADD</span><span class="language-bash"> url </span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>COPY 命令</p>
+</blockquote>
+<p>用来将context目录中指定文件复制到镜像的指定目录中</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">COPY</span><span class="language-bash"> src dest</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> [<span class="string">&quot;&lt;src&gt;&quot;</span>,... <span class="string">&quot;&lt;dest&gt;&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>VOLUME 命令</p>
+</blockquote>
+<p>用来定义容器运行时可以挂在到宿主机的目录</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">VOLUME</span><span class="language-bash"> [<span class="string">&quot;/data&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>ENTRYPOINT命令</p>
+</blockquote>
+<p>用来指定容器启动时执行命令和CMD类似</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">   [<span class="string">&quot;executable&quot;</span>, <span class="string">&quot;param1&quot;</span>, <span class="string">&quot;param2&quot;</span>]</span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="language-bash"> <span class="built_in">command</span> param1 param2</span></span><br></pre></td></tr></table></figure>
+<p>ENTRYPOINT指令，往往用于设置容器启动后的<strong>第一个命令</strong>，这对一个容器来说往往是固定的。<br>
+CMD指令，往往用于设置容器启动的第一个命令的<strong>默认参数</strong>，这对一个容器来说可以是变化的。</p>
+<h2 id="高级网络配置">高级网络配置</h2>
+<p>当 Docker 启动时，会自动在主机上创建一个 docker0`虚拟网桥，实际上是 Linux 的一个 bridge，可以理解为一个软件交换机。它会在挂载到它的网口之间进行转发。</p>
+<p>同时，Docker 随机分配一个本地未占用的私有网段（在 <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc1918">RFC1918</a> 中定义）中的一个地址给<code>docker0</code>接口。比如典型的<code>172.17.42.1</code>，掩码为<code>255.255.0.0</code>。此后启动的容器内的网口也会自动分配一个同一网段（<code>172.17.0.0/16</code>）的地址。</p>
+<p>当创建一个 Docker 容器的时候，同时会创建了一对<code>veth pair</code>接口（当数据包发送到一个接口时，另外一个接口也可以收到相同的数据包）。这对接口一端在容器内，即<code>eth0</code>；另一端在本地并被挂载到<code>docker0</code>网桥，名称以<code>veth</code>开头（例如<code>vethAQI2QT</code>）。通过这种方式，主机可以跟容器通信，容器之间也可以相互通信。Docker 就创建了在主机和所有容器之间一个虚拟共享网络。</p>
+<blockquote>
+<p><img src="https://s2.loli.net/2023/11/26/5VrBC3LuIGOAZDe.png" srcset="/img/loading.gif" lazyload alt="docker-17">查看网络信息</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># docker network ls</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>创建一个网桥</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># docker network create -d bridge 网桥名称</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>删除一个网桥</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># docker network rm 网桥名称</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>容器之前使用网络通信</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 1.查询当前网络配置</span></span><br><span class="line"><span class="bullet">-</span> docker network ls</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NETWORK ID          NAME                DRIVER              SCOPE</span><br><span class="line">8e424e5936b7        bridge              bridge              local</span><br><span class="line">17d974db02da        docker_gwbridge     bridge              local</span><br><span class="line">d6c326e433f7        host                host                local</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 2.创建桥接网络</span></span><br><span class="line"><span class="bullet">-</span> docker network create -d bridge info</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@centos ~]# docker network create -d bridge info</span><br><span class="line">6e4aaebff79b1df43a064e0e8fdab08f52d64ce34db78dd5184ce7aaaf550a2f</span><br><span class="line">[root@centos ~]# docker network ls</span><br><span class="line">NETWORK ID          NAME                DRIVER              SCOPE</span><br><span class="line">8e424e5936b7        bridge              bridge              local</span><br><span class="line">17d974db02da        docker_gwbridge     bridge              local</span><br><span class="line">d6c326e433f7        host                host                local</span><br><span class="line">6e4aaebff79b        info                bridge              local</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 3.启动容器指定使用网桥</span></span><br><span class="line"><span class="bullet">-</span> docker run -d -p 8890:80 --name nginx001 --network info nginx </span><br><span class="line"><span class="bullet">-</span> docker run -d -p 8891:80 --name nginx002 --network info nginx </span><br><span class="line"> <span class="code">`注意:一旦指定网桥后--name指定名字就是主机名,多个容器指定在同一个网桥时,可以在任意一个容器中使用主机名与容器进行互通`</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[root@centos ~]# docker run -d -p 8890:80 --name nginx001 --network info nginx </span><br><span class="line">c315bcc94e9ddaa36eb6c6f16ca51592b1ac8bf1ecfe9d8f01d892f3f10825fe</span><br><span class="line">[root@centos ~]# docker run -d -p 8891:80 --name nginx002 --network info nginx</span><br><span class="line">f8682db35dd7fb4395f90edb38df7cad71bbfaba71b6a4c6e2a3a525cb73c2a5</span><br><span class="line">[root@centos ~]# docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                  NAMES</span><br><span class="line">f8682db35dd7        nginx               &quot;/docker-entrypoint.…&quot;   3 seconds ago       Up 2 seconds        0.0.0.0:8891-&gt;80/tcp   nginx002</span><br><span class="line">c315bcc94e9d        nginx               &quot;/docker-entrypoint.…&quot;   7 minutes ago       Up 7 minutes        0.0.0.0:8890-&gt;80/tcp   nginx001</span><br><span class="line">b63169d43792        mysql:5.7.19        &quot;docker-entrypoint.s…&quot;   7 minutes ago       Up 7 minutes        3306/tcp               mysql_mysql.1.s75qe5kkpwwttyf0wrjvd2cda</span><br><span class="line">[root@centos ~]# docker exec -it f8682db35dd7 /bin/bash</span><br><span class="line">root@f8682db35dd7:/# curl http://nginx001</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;Welcome to nginx!&lt;/title&gt;</span><br><span class="line">.....</span><br></pre></td></tr></table></figure>
+<h2 id="高级数据卷配置">高级数据卷配置</h2>
+<p><strong>数据卷</strong> 是一个可供一个或多个容器使用的特殊目录，它绕过 UFS，可以提供很多有用的特性：</p>
+<ul>
+<li>数据卷可以在容器之间共享和重用</li>
+<li>对数据卷的修改会立马生效</li>
+<li>对数据卷的更新，不会影响镜像</li>
+<li>数据卷默认会一直存在，即使容器被删除</li>
+</ul>
+<p>注：数据卷的使用，类似于 Linux 下对目录或文件进行 mount，镜像中的被指定为挂载点的目录中的文件会复制到数据卷中（仅数据卷为空时会复制）</p>
+<blockquote>
+<p>创建数据卷</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@centos ~]# docker volume create my-vol</span><br><span class="line">my-vol</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>查看数据卷</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@centos ~]# docker volume inspect my-vol</span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;CreatedAt&quot;: &quot;2020-11-25T11:43:56+08:00&quot;,</span><br><span class="line">        &quot;Driver&quot;: &quot;local&quot;,</span><br><span class="line">        &quot;Labels&quot;: &#123;&#125;,</span><br><span class="line">        &quot;Mountpoint&quot;: &quot;/var/lib/docker/volumes/my-vol/_data&quot;,</span><br><span class="line">        &quot;Name&quot;: &quot;my-vol&quot;,</span><br><span class="line">        &quot;Options&quot;: &#123;&#125;,</span><br><span class="line">        &quot;Scope&quot;: &quot;local&quot;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>挂载数据卷</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@centos ~]# docker run -d -P --name web  -v my-vol:/usr/share/nginx/html  nginx</span><br><span class="line">[root@centos ~]# docker inspect web</span><br><span class="line">    &quot;Mounts&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;Type&quot;: &quot;volume&quot;,</span><br><span class="line">                &quot;Name&quot;: &quot;my-vol&quot;,</span><br><span class="line">                &quot;Source&quot;: &quot;/var/lib/docker/volumes/my-vol/_data&quot;,</span><br><span class="line">                &quot;Destination&quot;: &quot;/usr/share/nginx/html&quot;,</span><br><span class="line">                &quot;Driver&quot;: &quot;local&quot;,</span><br><span class="line">                &quot;Mode&quot;: &quot;z&quot;,</span><br><span class="line">                &quot;RW&quot;: true,</span><br><span class="line">                &quot;Propagation&quot;: &quot;&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>删除数据卷</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker volume rm my-vol</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="12-Docker-Compose">12.Docker Compose</h2>
+<p><code>Compose</code>项目是 Docker 官方的开源项目，负责实现对 Docker 容器集群的快速编排。从功能上看，跟<code>OpenStack</code>中的<code>Heat</code>十分类似。</p>
+<p>其代码目前在 <a target="_blank" rel="noopener" href="https://github.com/docker/compose">https://github.com/docker/compose</a> 上开源。</p>
+<p><code>Compose</code>定位是 「定义和运行多个 Docker 容器的应用（Defining and running multi-container Docker applications）」，其前身是开源项目 Fig。</p>
+<p>通过第一部分中的介绍，我们知道使用一个<code>Dockerfile</code>模板文件，可以让用户很方便的定义一个单独的应用容器。然而，在日常工作中，经常会碰到需要多个容器相互配合来完成某项任务的情况。例如要实现一个 Web 项目，除了 Web 服务容器本身，往往还需要再加上后端的数据库服务容器，甚至还包括负载均衡容器等。</p>
+<p><code>Compose</code>恰好满足了这样的需求。它允许用户通过一个单独的<code>docker-compose.yml</code>模板文件（YAML 格式）来定义一组相关联的应用容器为一个项目（project）。</p>
+<p><code>Compose</code>中有两个重要的概念：</p>
+<ul>
+<li>服务 (<code>service</code>)：一个应用的容器，实际上可以包括若干运行相同镜像的容器实例。</li>
+<li>项目 (<code>project</code>)：由一组关联的应用容器组成的一个完整业务单元，在<code>docker-compose.yml</code>文件中定义。</li>
+</ul>
+<p><code>Compose</code>的默认管理对象是项目，通过子命令对项目中的一组容器进行便捷地生命周期管理。</p>
+<p><code>Compose</code>项目由 Python 编写，实现上调用了 Docker 服务提供的 API 来对容器进行管理。因此，只要所操作的平台支持 Docker API，就可以在其上利用<code>Compose</code>来进行编排管理。</p>
+<h3 id="安装与卸载">安装与卸载</h3>
+<blockquote>
+<p>linux</p>
+</blockquote>
+<p>在 Linux 上的也安装十分简单，从 官方 GitHub Release 处直接下载编译好的二进制文件即可。例如，在 Linux 64 位系统上直接下载对应的二进制包。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L https://github.com/docker/compose/releases/download/1.25.5/docker-compose-`<span class="built_in">uname</span> -s`-`<span class="built_in">uname</span> -m`&gt; /usr/local/bin/docker-compose</span><br><span class="line">sudo <span class="built_in">chmod</span> +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>macos、window</p>
+</blockquote>
+<p>Compose 可以通过 Python 的包管理工具 pip 进行安装，也可以直接下载编译好的二进制文件使用，甚至能够直接在 Docker 容器中运行。<code>Docker Desktop for Mac/Windows 自带 docker-compose 二进制文件，安装 Docker 之后可以直接使用</code>。</p>
+<blockquote>
+<p>卸载</p>
+</blockquote>
+<p>如果是二进制包方式安装的，删除二进制文件即可。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+<p>测试安装成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker-compose --version</span></span><br><span class="line"> docker-compose version 1.25.5, build 4667896b</span><br></pre></td></tr></table></figure>
+<h3 id="docker-compose使用">docker compose使用</h3>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 1.相关概念</span></span><br></pre></td></tr></table></figure>
+<p>首先介绍几个术语。</p>
+<ul>
+<li>服务 (<code>service</code>)：一个应用容器，实际上可以运行多个相同镜像的实例。</li>
+<li>项目 (<code>project</code>)：由一组关联的应用容器组成的一个完整业务单元。∂一个项目可以由多个服务（容器）关联而成，<code>Compose</code>面向项目进行管理。</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 2.场景</span></span><br></pre></td></tr></table></figure>
+<p>最常见的项目是 web 网站，该项目应该包含 web 应用和缓存。</p>
+<ul>
+<li>springboot应用</li>
+<li>mysql服务</li>
+<li>redis服务</li>
+<li>elasticsearch服务</li>
+<li>…</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 3.docker-compose模板</span></span><br><span class="line"><span class="bullet">-</span> 参考文档:https://docker<span class="emphasis">_practice.gitee.io/zh-cn/compose/compose_</span>file.html</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3.0&quot;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">mysqldb:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">mysql:5.7.19</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">mysql</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;3306:3306&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/root/mysql/conf:/etc/mysql/conf.d</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/root/mysql/logs:/logs</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/root/mysql/data:/var/lib/mysql</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">MYSQL_ROOT_PASSWORD:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">ems</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">redis</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">redis:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">redis:4.0.14</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">redis</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;6379:6379&quot;</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">ems</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/root/redis/data:/data</span></span><br><span class="line">    <span class="attr">command:</span> <span class="string">redis-server</span></span><br><span class="line">    </span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">ems:</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 4.通过docker-compose运行一组容器</span></span><br><span class="line"><span class="bullet">-</span> 参考文档:https://docker<span class="emphasis">_practice.gitee.io/zh-cn/compose/commands.html</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@centos ~]<span class="comment"># docker-compose up           //前台启动一组服务</span></span><br><span class="line">[root@centos ~]<span class="comment"># docker-compose up -d        //后台启动一组服务</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="docker-compose-模板文件">docker-compose 模板文件</h3>
+<p>模板文件是使用<code>Compose</code>的核心，涉及到的指令关键字也比较多。但大家不用担心，这里面大部分指令跟<code>docker run</code>相关参数的含义都是类似的。</p>
+<p>默认的模板文件名称为<code>docker-compose.yml</code>，格式为 YAML 格式。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">webapp:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">examples/web</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;80:80&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;/data&quot;</span></span><br></pre></td></tr></table></figure>
+<p>注意每个服务都必须通过<code>image</code>指令指定镜像或<code>build</code>指令（需要 Dockerfile）等来自动构建生成镜像。</p>
+<p>如果使用<code>build</code>指令，在<code>Dockerfile</code>中设置的选项(例如：<code>CMD</code>,<code>EXPOSE</code>,<code>VOLUME</code>,<code>ENV</code>等) 将会自动被获取，无需在<code>docker-compose.yml</code>中重复设置。</p>
+<p>下面分别介绍各个指令的用法。</p>
+<h4 id="build"><code>build</code></h4>
+<p>指定<code>Dockerfile</code>所在文件夹的路径（可以是绝对路径，或者相对 docker-compose.yml 文件的路径）。<code>Compose</code>将会利用它自动构建这个镜像，然后使用这个镜像。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3&#x27;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">webapp:</span></span><br><span class="line">    <span class="attr">build:</span> <span class="string">./dir</span></span><br></pre></td></tr></table></figure>
+<p>你也可以使用<code>context</code>指令指定<code>Dockerfile</code>所在文件夹的路径。</p>
+<p>使用<code>dockerfile</code>指令指定<code>Dockerfile</code>文件名。</p>
+<p>使用<code>arg</code>指令指定构建镜像时的变量。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3&#x27;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">webapp:</span></span><br><span class="line">    <span class="attr">build:</span></span><br><span class="line">      <span class="attr">context:</span> <span class="string">./dir</span></span><br><span class="line">      <span class="attr">dockerfile:</span> <span class="string">Dockerfile-alternate</span></span><br><span class="line">      <span class="attr">args:</span></span><br><span class="line">        <span class="attr">buildno:</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h4 id="command"><code>command</code></h4>
+<p>覆盖容器启动后默认执行的命令。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">command:</span> <span class="string">echo</span> <span class="string">&quot;hello world&quot;</span></span><br></pre></td></tr></table></figure>
+<h4 id="container-name"><code>container_name</code></h4>
+<p>指定容器名称。默认将会使用<code>项目名称_服务名称_序号</code>这样的格式。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">container_name:</span> <span class="string">docker-web-container</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意: 指定容器名称后，该服务将无法进行扩展（scale），因为 Docker 不允许多个容器具有相同的名称。</p>
+</blockquote>
+<h4 id="depends-on"><code>depends_on</code></h4>
+<p>解决容器的依赖、启动先后的问题。以下例子中会先启动<code>redis``db</code>再启动<code>web</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">web:</span></span><br><span class="line">    <span class="attr">build:</span> <span class="string">../../../新建文件夹</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">db</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">redis</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">redis:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">redis</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">db:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">postgres</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：<code>web</code>服务不会等待<code>redis``db</code>「完全启动」之后才启动。</p>
+</blockquote>
+<h4 id="env-file"><code>env_file</code></h4>
+<p>从文件中获取环境变量，可以为单独的文件路径或列表。</p>
+<p>如果通过<code>docker-compose -f FILE</code>方式来指定 Compose 模板文件，则<code>env_file</code>中变量的路径会基于模板文件路径。</p>
+<p>如果有变量名称与<code>environment</code>指令冲突，则按照惯例，以后者为准。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">env_file: .<span class="built_in">env</span></span><br><span class="line"></span><br><span class="line">env_file:</span><br><span class="line">  - ./common.env</span><br><span class="line">  - ./apps/web.env</span><br><span class="line">  - /opt/secrets.env</span><br></pre></td></tr></table></figure>
+<p>环境变量文件中每一行必须符合格式，支持<code>#</code>开头的注释行。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># common.env: Set development environment</span></span><br><span class="line">PROG_ENV=development</span><br></pre></td></tr></table></figure>
+<h4 id="environment"><code>environment</code></h4>
+<p>设置环境变量。你可以使用数组或字典两种格式。</p>
+<p>只给定名称的变量会自动获取运行 Compose 主机上对应变量的值，可以用来防止泄露不必要的数据。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">environment:</span></span><br><span class="line">  <span class="attr">RACK_ENV:</span> <span class="string">development</span></span><br><span class="line">  <span class="attr">SESSION_SECRET:</span></span><br><span class="line"></span><br><span class="line"><span class="attr">environment:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">RACK_ENV=development</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">SESSION_SECRET</span></span><br></pre></td></tr></table></figure>
+<p>如果变量名称或者值中用到<code>true|false，yes|no</code>等表达 <a target="_blank" rel="noopener" href="https://yaml.org/type/bool.html">布尔</a> 含义的词汇，最好放到引号里，避免 YAML 自动解析某些内容为对应的布尔语义。这些特定词汇，包括</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y|Y|<span class="built_in">yes</span>|Yes|YES|n|N|no|No|NO|<span class="literal">true</span>|True|TRUE|<span class="literal">false</span>|False|FALSE|on|On|ON|off|Off|OFF</span><br></pre></td></tr></table></figure>
+<h4 id="healthcheck"><code>healthcheck</code></h4>
+<p>通过命令检查容器是否健康运行。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">healthcheck:</span></span><br><span class="line">  <span class="attr">test:</span> [<span class="string">&quot;CMD&quot;</span>, <span class="string">&quot;curl&quot;</span>, <span class="string">&quot;-f&quot;</span>, <span class="string">&quot;http://localhost&quot;</span>]</span><br><span class="line">  <span class="attr">interval:</span> <span class="string">1m30s</span></span><br><span class="line">  <span class="attr">timeout:</span> <span class="string">10s</span></span><br><span class="line">  <span class="attr">retries:</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<h4 id="image"><code>image</code></h4>
+<p>指定为镜像名称或镜像 ID。如果镜像在本地不存在，<code>Compose</code>将会尝试拉取这个镜像。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">image:</span> <span class="string">ubuntu</span></span><br><span class="line"><span class="attr">image:</span> <span class="string">orchardup/postgresql</span></span><br><span class="line"><span class="attr">image:</span> <span class="string">a4bc65fd</span></span><br></pre></td></tr></table></figure>
+<h4 id="networks"><code>networks</code></h4>
+<p>配置容器连接的网络。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3&quot;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">some-service:</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">     <span class="bullet">-</span> <span class="string">some-network</span></span><br><span class="line">     <span class="bullet">-</span> <span class="string">other-network</span></span><br><span class="line"></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">some-network:</span></span><br><span class="line">  <span class="attr">other-network:</span></span><br></pre></td></tr></table></figure>
+<h4 id="ports"><code>ports</code></h4>
+<p>暴露端口信息。</p>
+<p>使用宿主端口：容器端口<code>(HOST:CONTAINER)</code>格式，或者仅仅指定容器的端口（宿主将会随机选择端口）都可以。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">ports:</span></span><br><span class="line"> <span class="bullet">-</span> <span class="string">&quot;3000&quot;</span></span><br><span class="line"> <span class="bullet">-</span> <span class="string">&quot;8000:8000&quot;</span></span><br><span class="line"> <span class="bullet">-</span> <span class="string">&quot;49100:22&quot;</span></span><br><span class="line"> <span class="bullet">-</span> <span class="string">&quot;127.0.0.1:8001:8001&quot;</span></span><br></pre></td></tr></table></figure>
+<p><em>注意：当使用<code>HOST:CONTAINER</code>格式来映射端口时，如果你使用的容器端口小于 60 并且没放到引号里，可能会得到错误结果，因为<code>YAML</code>会自动解析<code>xx:yy</code>这种数字格式为 60 进制。为避免出现这种问题，建议数字串都采用引号包括起来的字符串格式。</em></p>
+<h4 id="sysctls"><code>sysctls</code></h4>
+<p>配置容器内核参数。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sysctls:</span></span><br><span class="line">  <span class="attr">net.core.somaxconn:</span> <span class="number">1024</span></span><br><span class="line">  <span class="attr">net.ipv4.tcp_syncookies:</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="attr">sysctls:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">net.core.somaxconn=1024</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">net.ipv4.tcp_syncookies=0</span></span><br></pre></td></tr></table></figure>
+<h4 id="ulimits"><code>ulimits</code></h4>
+<p>指定容器的 ulimits 限制值。</p>
+<p>例如，指定最大进程数为 65535，指定文件句柄数为 20000（软限制，应用可以随时修改，不能超过硬限制） 和 40000（系统硬限制，只能 root 用户提高）。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">ulimits:</span></span><br><span class="line">  <span class="attr">nproc:</span> <span class="number">65535</span></span><br><span class="line">  <span class="attr">nofile:</span></span><br><span class="line">    <span class="attr">soft:</span> <span class="number">20000</span></span><br><span class="line">    <span class="attr">hard:</span> <span class="number">40000</span></span><br></pre></td></tr></table></figure>
+<h4 id="volumes"><code>volumes</code></h4>
+<p>数据卷所挂载路径设置。可以设置为宿主机路径(<code>HOST:CONTAINER</code>)或者数据卷名称(<code>VOLUME:CONTAINER</code>)，并且可以设置访问模式 （<code>HOST:CONTAINER:ro</code>）。</p>
+<p>该指令中路径支持相对路径。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">volumes:</span></span><br><span class="line"> <span class="bullet">-</span> <span class="string">/var/lib/mysql</span></span><br><span class="line"> <span class="bullet">-</span> <span class="string">cache/:/tmp/cache</span></span><br><span class="line"> <span class="bullet">-</span> <span class="string">~/configs:/etc/configs/:ro</span></span><br></pre></td></tr></table></figure>
+<p>如果路径为数据卷名称，必须在文件中配置数据卷。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">my_src:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">mysql:8.0</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">mysql_data:/var/lib/mysql</span></span><br><span class="line"></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line">  <span class="attr">mysql_data:</span></span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>docker-compose 常用命令</p>
+</blockquote>
+<h5 id="1-命令对象与格式">1. 命令对象与格式</h5>
+<p>对于 Compose 来说，大部分命令的对象既可以是项目本身，也可以指定为项目中的服务或者容器。如果没有特别的说明，命令对象将是项目，这意味着项目中所有的服务都会受到命令影响。</p>
+<p>执行<code>docker-compose [COMMAND] --help</code>或者<code>docker-compose help [COMMAND]</code>可以查看具体某个命令的使用格式。</p>
+<p><code>docker-compose</code>命令的基本的使用格式是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose [-f=&lt;arg&gt;...] [options] [COMMAND] [ARGS...]</span><br></pre></td></tr></table></figure>
+<h5 id="2-命令选项">2. 命令选项</h5>
+<ul>
+<li><code>-f, --file FILE</code>指定使用的 Compose 模板文件，默认为<code>docker-compose.yml</code>，可以多次指定。</li>
+<li><code>-p, --project-name NAME</code>指定项目名称，默认将使用所在目录名称作为项目名。</li>
+<li><code>--x-networking</code>使用 Docker 的可拔插网络后端特性</li>
+<li><code>--x-network-driver DRIVER</code>指定网络后端的驱动，默认为<code>bridge</code></li>
+<li><code>--verbose</code>输出更多调试信息。</li>
+<li><code>-v, --version</code>打印版本并退出。</li>
+</ul>
+<h5 id="3-命令使用说明">3.命令使用说明</h5>
+<h5 id="up"><code>up</code></h5>
+<p>格式为<code>docker-compose up [options] [SERVICE...]</code>。</p>
+<ul>
+<li>
+<p>该命令十分强大，它将尝试自动完成包括构建镜像，（重新）创建服务，启动服务，并关联服务相关容器的一系列操作。</p>
+</li>
+<li>
+<p>链接的服务都将会被自动启动，除非已经处于运行状态。</p>
+</li>
+<li>
+<p>可以说，大部分时候都可以直接通过该命令来启动一个项目。</p>
+</li>
+<li>
+<p>默认情况，<code>docker-compose up</code>启动的容器都在前台，控制台将会同时打印所有容器的输出信息，可以很方便进行调试。</p>
+</li>
+<li>
+<p>当通过<code>Ctrl-C</code>停止命令时，所有容器将会停止。</p>
+</li>
+<li>
+<p>如果使用<code>docker-compose up -d</code>，将会在后台启动并运行所有的容器。一般推荐生产环境下使用该选项。</p>
+</li>
+<li>
+<p>默认情况，如果服务容器已经存在，<code>docker-compose up</code>将会尝试停止容器，然后重新创建（保持使用<code>volumes-from</code>挂载的卷），以保证新启动的服务匹配<code>docker-compose.yml</code>文件的最新内容</p>
+</li>
+</ul>
+<hr>
+<h5 id="down"><code>down</code></h5>
+<ul>
+<li>此命令将会停止<code>up</code>命令所启动的容器，并移除网络</li>
+</ul>
+<hr>
+<h5 id="exec"><code>exec</code></h5>
+<ul>
+<li>进入指定的容器。</li>
+</ul>
+<hr>
+<h5 id="ps"><code>ps</code></h5>
+<p>格式为<code>docker-compose ps [options] [SERVICE...]</code>。</p>
+<p>列出项目中目前的所有容器。</p>
+<p>选项：</p>
+<ul>
+<li><code>-q</code>只打印容器的 ID 信息。</li>
+</ul>
+<hr>
+<h5 id="restart"><code>restart</code></h5>
+<p>格式为<code>docker-compose restart [options] [SERVICE...]</code>。</p>
+<p>重启项目中的服务。</p>
+<p>选项：</p>
+<ul>
+<li><code>-t, --timeout TIMEOUT</code>指定重启前停止容器的超时（默认为 10 秒）。</li>
+</ul>
+<hr>
+<h5 id="rm"><code>rm</code></h5>
+<p>格式为<code>docker-compose rm [options] [SERVICE...]</code>。</p>
+<p>删除所有（停止状态的）服务容器。推荐先执行<code>docker-compose stop</code>命令来停止容器。</p>
+<p>选项：</p>
+<ul>
+<li><code>-f, --force</code>强制直接删除，包括非停止状态的容器。一般尽量不要使用</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BF%90%E7%BB%B4%E6%8A%80%E6%9C%AF/" class="category-chain-item">运维技术</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" class="print-no-link">#环境部署</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Docker使用详解</div>
+      <div>http://example.com/2023/02/21/Docker笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Shi_Kang</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>February 21, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/09/13/SpringSecurity%E7%AC%94%E8%AE%B0/" title="Spring Security">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Spring Security</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/11/13/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/Node.JS%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3/" title="Node.JS简单了解">
+                        <span class="hidden-mobile">Node.JS简单了解</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'gusheng2000/gusheng2000.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'Comment');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>skr</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

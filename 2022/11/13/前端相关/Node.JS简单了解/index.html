@@ -1,0 +1,911 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" href="/img/myfavicon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Shi_Kang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Node.JS简单了解 node.js 是基于Chrome JavaScript 运行时建立的一个平台，简单说就是不需要浏览器就可以执行 javascript 代码 安装及配置 下载安装 Node.js 访问官网下载安装合适的 node.js：https:&#x2F;&#x2F;nodejs.org&#x2F;zh-cn&#x2F;，下载好后双击安装，全程下一步即可 12345# 使用cmd检测node是否安装成功C:\Users\Ad">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.JS简单了解">
+<meta property="og:url" content="http://example.com/2022/11/13/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/Node.JS%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3/index.html">
+<meta property="og:site_name" content="Shi_Kang">
+<meta property="og:description" content="Node.JS简单了解 node.js 是基于Chrome JavaScript 运行时建立的一个平台，简单说就是不需要浏览器就可以执行 javascript 代码 安装及配置 下载安装 Node.js 访问官网下载安装合适的 node.js：https:&#x2F;&#x2F;nodejs.org&#x2F;zh-cn&#x2F;，下载好后双击安装，全程下一步即可 12345# 使用cmd检测node是否安装成功C:\Users\Ad">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s2.loli.net/2023/11/26/GyIdrAsehtBv1ug.png">
+<meta property="article:published_time" content="2022-11-13T12:46:25.000Z">
+<meta property="article:modified_time" content="2024-10-12T02:08:00.585Z">
+<meta property="article:author" content="Shi_Kang">
+<meta property="article:tag" content="node.js">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2023/11/26/GyIdrAsehtBv1ug.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Node.JS简单了解 - Shi_Kang</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":null,"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 80vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Shi·s Web Space</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Node.JS简单了解"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-11-13 20:46" pubdate>
+          November 13, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          1.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          12 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Node.JS简单了解</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1>Node.JS简单了解</h1>
+<p>node.js 是基于Chrome JavaScript 运行时建立的一个平台，简单说就是不需要浏览器就可以执行 javascript 代码</p>
+<h2 id="安装及配置">安装及配置</h2>
+<h3 id="下载安装-Node-js">下载安装 Node.js</h3>
+<p>访问官网下载安装合适的 node.js：<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/%EF%BC%8C%E4%B8%8B%E8%BD%BD%E5%A5%BD%E5%90%8E%E5%8F%8C%E5%87%BB%E5%AE%89%E8%A3%85%EF%BC%8C%E5%85%A8%E7%A8%8B%E4%B8%8B%E4%B8%80%E6%AD%A5%E5%8D%B3%E5%8F%AF">https://nodejs.org/zh-cn/，下载好后双击安装，全程下一步即可</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用cmd检测node是否安装成功</span></span><br><span class="line">C:\Users\Administrator&gt;node -v   # 查看node版本</span><br><span class="line">v10.16.3</span><br><span class="line">C:\Users\Administrator&gt;npm -v    # 查看npm版本</span><br><span class="line">6.9.0</span><br></pre></td></tr></table></figure>
+<h3 id="修改安装及缓存路径">修改安装及缓存路径</h3>
+<p>默认情况下，当我们安装了某个全局包的时候，是存放在C盘的，具体存放路径可在控制台输入<code>npm root -g</code>查看，但是我们想要将目录修改为自己的，需要进行以下操作：</p>
+<p>**1.**在 node 的安装目录新建两个文件夹   全局包下载 <code>node_global</code>，node缓存 <code>node_cache</code></p>
+<p><img src="..//img/node-01.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>**2.**执行命令修改两个目录：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config set prefix &quot;node_global目录&quot;</span><br><span class="line">npm config set cache &quot;node_cache目录&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="修改环境变量">修改环境变量</h3>
+<p>当我们修改了全局安装路径及缓存后，环境变量还是没有修改的，需要去修改环境变量</p>
+<p>**1.**在用户变量 <code>path</code> 中添加自己创建的 <code>node_global</code> 目录</p>
+<p>**2.**系统变量中新建 <code>NODE_PATH</code> 为 node 安装目录下的 <code>modules</code> 目录</p>
+<p>**3.**在系统变量中的 <code>path</code> 中添加 node 的安装目录，这个一般在安装的时候就会自动添加，如果没有就手动添加</p>
+<h2 id="NPM-简单介绍">NPM 简单介绍</h2>
+<h3 id="NPM-简单了解">NPM 简单了解</h3>
+<p>npm 是用来辅助 node.js 的包管理工具，类似 maven 一样可以下载各种包/依赖，目前的 node 基本在安装的时候就将 npm 一并安装好了</p>
+<blockquote>
+<p>npm 的简单命令</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>命令语法</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>npm -v</td>
+<td>查看当前安装的 npm 的版本</td>
+</tr>
+<tr>
+<td>npm install npm -g</td>
+<td>升级 npm 版本号</td>
+</tr>
+<tr>
+<td>npm config set proxy [location]</td>
+<td>设置代理服务器，null 代表关闭代理</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>全局安装与本地安装</p>
+</blockquote>
+<p><strong>本地安装</strong> 是安装在当前目录下的 <code>node_modules</code> 目录中，如果目标目录不存在的话会自动生成，语法为：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @vue/cli</span><br></pre></td></tr></table></figure>
+<p><strong>全局安装</strong> 是安装在之前配置的两个目录中，<code>-g</code> 代表 global 全局的意思</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue/cli</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>更多命令</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>命令语法</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>npm init</td>
+<td>初始化简单的 package.json 文件</td>
+</tr>
+<tr>
+<td>npm init --yes|-y</td>
+<td>初始化简单的 package.json 文件，偷懒不用一直按enter</td>
+</tr>
+<tr>
+<td>npm inistall 包名</td>
+<td>本地安装，安装到项目目录下，不在 package.json 中写入依赖</td>
+</tr>
+<tr>
+<td>npm inistall 包名 -g</td>
+<td>全局安装，安装在 Node 安装目录下的 node_modules 下</td>
+</tr>
+<tr>
+<td>npm inistall 包名 -s</td>
+<td>本地安装，并在 package.json 文件的 dependencies 中写入依赖</td>
+</tr>
+<tr>
+<td>npm inistall 包名 -D</td>
+<td>本地安装，等价于–save -dev</td>
+</tr>
+<tr>
+<td>npm uninstall 包名</td>
+<td>本地卸载</td>
+</tr>
+<tr>
+<td>npm uninstall 包名 -g</td>
+<td>全局卸载</td>
+</tr>
+<tr>
+<td>npm info 包名</td>
+<td>可以查看指定包的历史版本</td>
+</tr>
+<tr>
+<td>npm inistall 包名@x.x.x</td>
+<td>在安装指定包的时候使用@可以指定安装的版本</td>
+</tr>
+</tbody>
+</table>
+<h3 id="安装淘宝镜像">安装淘宝镜像</h3>
+<p>我们在使用 npm 安装某些依赖的时候，会发现安装非常的慢，因为 npm 默认的国外的下载地址，这个时候我们就可以通过安装淘宝镜像来解决这个问题，淘宝镜像对应的是 <code>cnpm</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">全局安装淘宝镜像</span></span><br><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<p>安装完成之后简单使用一下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">一般安装vue</span></span><br><span class="line">npm install -g @vue/cli</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">淘宝镜像安装vue</span></span><br><span class="line">cnpm install -g @vue/cli</span><br></pre></td></tr></table></figure>
+<h3 id="安装-NRM-源管理器">安装 NRM 源管理器</h3>
+<p>除了安装 cnpm 淘宝镜像之外还有一种方法可以安装淘宝镜像，那就是 nrm 源管理器，首先我们来安装 nrm 源管理器：</p>
+<blockquote>
+<p>全局安装 nrm 源管理器</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i nrm -g    # 这里也可以使用cnpm安装，当前前提得安装淘宝镜像</span><br></pre></td></tr></table></figure>
+<p>等待安装完成之后我们可以通过查看版本号来检测是否安装成功：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">看到版本号，安装成功</span></span><br><span class="line">C:\Users\Administrator&gt;nrm -V</span><br><span class="line">1.2.1</span><br></pre></td></tr></table></figure>
+<p>接下来我们通过源管理器来更管 npm 的源设置 <code>nrm use taobao</code>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">use代表选择，选择使用淘宝的镜像</span></span><br><span class="line">C:\Users\Administrator&gt;nrm use taobao</span><br><span class="line">   Registry has been set to: https://registry.npm.taobao.org/</span><br></pre></td></tr></table></figure>
+<p>这样一来我们继续使用 npm 进行下载的时候，使用的就是淘宝的源了，除开淘宝之外还可以切换一些其他的源：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">taobao 前面带有*就表示当前选择是淘宝镜像，第一个npm就是默认的国外镜像</span></span><br><span class="line">C:\Users\Administrator&gt;nrm ls</span><br><span class="line"></span><br><span class="line">  npm -------- https://registry.npmjs.org/</span><br><span class="line">  yarn ------- https://registry.yarnpkg.com/</span><br><span class="line">  cnpm ------- http://r.cnpmjs.org/</span><br><span class="line">* taobao ----- https://registry.npm.taobao.org/</span><br><span class="line">  nj --------- https://registry.nodejitsu.com/</span><br><span class="line">  npmMirror -- https://skimdb.npmjs.com/registry/</span><br><span class="line">  edunpm ----- http://registry.enpmjs.org/</span><br></pre></td></tr></table></figure>
+<h2 id="Node-JS-体验">Node.JS 体验</h2>
+<blockquote>
+<p>写一个 helloword 程序</p>
+</blockquote>
+<p>我们新建一个  <code>hello.js</code> 文件，在里面书写 js 的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello Node.js!&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>让我们来运行刚刚创建好的程序：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">程序成功执行了！</span></span><br><span class="line">PS D:\Workspase\VScode\Node&gt; node hello.js</span><br><span class="line">Hello Node.js!</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>写一个 helloword 的接口</p>
+</blockquote>
+<p>还是和刚才一样创建一个 <code>http1.js</code> 文件，书写以下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);  <span class="comment">// 引入HTTP模块</span></span><br><span class="line"><span class="keyword">let</span> port = <span class="number">8000</span>;   <span class="comment">// 设置启动端口</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个HTTP服务</span></span><br><span class="line">http.<span class="title function_">createServer</span>( <span class="function">(<span class="params">req, resp</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">// 设置响应头【状态码，响应类型等等】</span></span><br><span class="line">    resp.<span class="title function_">writeHead</span>(<span class="number">200</span>, &#123;<span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/plain&#x27;</span>&#125;);</span><br><span class="line">    <span class="comment">// 发送响应数据 &quot;HelloWorld, Http&quot;</span></span><br><span class="line">    resp.<span class="title function_">end</span>(<span class="string">&#x27;HelloWorld, Http&#x27;</span>);</span><br><span class="line">&#125;).<span class="title function_">listen</span>(port); <span class="comment">// 在目标端口启动</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 打印一个启动成功的提示，不然什么提示都没有很尴尬</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Http server runing! at port &quot;</span> + port);</span><br></pre></td></tr></table></figure>
+<p>让我们来执行并访问一下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PS D:\Workspase\VScode\Node&gt; node http1.js</span><br><span class="line">Http server runing! at port 8000</span><br></pre></td></tr></table></figure>
+<p><img src="..//img/node-02.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF/" class="category-chain-item">前端</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/node-js/" class="print-no-link">#node.js</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Node.JS简单了解</div>
+      <div>http://example.com/2022/11/13/前端相关/Node.JS简单了解/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Shi_Kang</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>November 13, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/02/21/Docker%E7%AC%94%E8%AE%B0/" title="Docker使用详解">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Docker使用详解</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/11/13/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/Json&amp;Ajax/" title="Json &amp; Ajax 笔记">
+                        <span class="hidden-mobile">Json &amp; Ajax 笔记</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'gusheng2000/gusheng2000.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'Comment');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>skr</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
