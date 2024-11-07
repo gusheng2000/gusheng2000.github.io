@@ -28,7 +28,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://s2.loli.net/2024/01/23/DOQteIg2SAsfxwm.png">
 <meta property="article:published_time" content="2024-09-13T12:46:25.000Z">
-<meta property="article:modified_time" content="2024-11-06T07:36:31.318Z">
+<meta property="article:modified_time" content="2024-11-07T06:30:16.271Z">
 <meta property="article:author" content="Shi_Kang">
 <meta property="article:tag" content="网络编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -319,7 +319,7 @@
 <li><code>exceptionCaught(ChannelHandlerContext ctx, Throwable cause)</code>：当发生异常时调用，记录错误并关闭连接。</li>
 </ol>
 <h2 id="3-1-ChannelHandler的生命周期与事件处理机制">3.1 <strong>ChannelHandler的生命周期与事件处理机制</strong></h2>
-<p><img src="Netty%20%E5%AE%9E%E7%8E%B0WebSocket%20%E6%9C%8D%E5%8A%A1%20657c76b554e648f6aadfc6c919ca1493/Untitled.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/skr-1008/picgo1@main/img/202408271623376.png" srcset="/img/loading.gif" lazyload alt="生命周期与事件处理机制"></p>
 <h3 id="概述"><strong>概述</strong></h3>
 <p>Netty的<code>ChannelHandler</code>是处理网络事件（如数据读取、数据写入、连接建立、连接关闭等）的核心组件。</p>
 <p>在Netty中，<code>ChannelHandler</code>的生命周期与<code>Channel</code>的状态紧密相关，主要涉及到以下几个阶段：</p>
@@ -387,7 +387,7 @@ channelActive() 与 channelInActive()可以统计单机的连接数，channelAct
 <hr>
 <h2 id="另外一种操作-阅读下源码">另外一种操作,阅读下源码</h2>
 <p><code>IdleStateHandler</code> 内有三个内部类, <code>ReaderIdleTimeoutTask</code>,<code>WriterIdleTimeoutTask ,AllIdleTimeoutTask</code> 里面都会调用  channelIdle 方法  也就是出现超时事件时 都会执行这个方法</p>
-<p><img src="Netty%20%E5%AE%9E%E7%8E%B0WebSocket%20%E6%9C%8D%E5%8A%A1%20657c76b554e648f6aadfc6c919ca1493/Untitled%201.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/skr-1008/picgo1@main/img/202411071427992.png" srcset="/img/loading.gif" lazyload alt="IdleStateHandler调用"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Is called when an &#123;<span class="hljs-doctag">@link</span> IdleStateEvent&#125; should be fired. This implementation calls</span><br><span class="hljs-comment"> * &#123;<span class="hljs-doctag">@link</span> ChannelHandlerContext#fireUserEventTriggered(Object)&#125;.</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">channelIdle</span><span class="hljs-params">(ChannelHandlerContext ctx, IdleStateEvent evt)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>    ctx.fireUserEventTriggered(evt);<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>如果出现超时直接关闭channel 其实也可以写一个类继承 <code>IdleStateHandler</code> 直接重写 <code>channelIdle</code> 然后加入判断pipeline内,逻辑就是对应的事件处理,这样也可以做到,而且方法的参数就是IdleStateEvent  不用判断类型,也算是一个骚操作吧 不过这样不是官方设计的用法。官方推荐第一种用法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">channelIdle</span><span class="hljs-params">(ChannelHandlerContext ctx, IdleStateEvent evt)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>    <span class="hljs-keyword">if</span> (evt.state() == IdleState.READER_IDLE) &#123;<br>      log.warn(<span class="hljs-string">&quot;no data received after 60s, channel=&quot;</span> + ctx.channel().remoteAddress().toString()<br>          + <span class="hljs-string">&quot; will close&quot;</span>);<br>      ctx.close();<br>    &#125;<br>  &#125;<br></code></pre></td></tr></table></figure>
